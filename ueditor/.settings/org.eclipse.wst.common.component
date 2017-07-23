@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="lyz">
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <dependent-module archiveName="commons-io-2.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/ueditor/lib/commons-io-2.4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-fileupload-1.3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/ueditor/lib/commons-fileupload-1.3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ueditor-1.1.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/ueditor/lib/ueditor-1.1.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="json.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/ueditor/lib/json.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-codec-1.9.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/ueditor/lib/commons-codec-1.9.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/ueditor/target/classes"/>
+        <property name="context-root" value="lyz"/>
+    </wb-module>
+</project-modules>
