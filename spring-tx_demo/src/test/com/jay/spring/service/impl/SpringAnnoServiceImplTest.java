@@ -13,6 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
 /**
+ * 测试类
  * Created by xiang.wei on 2017/8/11.
  */
 @RunWith(JUnit4.class)
