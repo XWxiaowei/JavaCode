@@ -1,8 +1,3 @@
 # TempCode
 git 学习
-一些临时存放的小程序
-Git tracks changes
-Creating a new branch is quick
-Creating a new branch is quick and simple.
-Create branch dev 
-BUG 分支
+spring-tx_demo 的博客地址：http://www.cnblogs.com/Fly-Bob/p/7347206.html
