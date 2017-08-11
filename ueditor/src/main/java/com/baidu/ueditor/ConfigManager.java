@@ -172,10 +172,10 @@ public final class ConfigManager {
 		
 	}
 	
-	private String getConfigPath () {
-//		return this.parentPath + File.separator + ConfigManager.configFileName;
-		return this.rootPath+File.separator+"static/ueditor/"+"jsp"+File.separator+ConfigManager.configFileName;
-	}
+		private String getConfigPath () {
+	//		return this.parentPath + File.separator + ConfigManager.configFileName;
+			return this.rootPath+File.separator+"static/ueditor/"+"jsp"+File.separator+ConfigManager.configFileName;
+		}
 
 	private String[] getArray ( String key ) {
 		
