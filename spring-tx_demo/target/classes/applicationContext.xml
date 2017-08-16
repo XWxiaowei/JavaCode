@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 						http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+ 						http://www.springframework.org/schema/context 
+ 						http://www.springframework.org/schema/context/spring-context-4.0.xsd
+ 						http://www.springframework.org/schema/tx 
+ 						http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+ 						http://www.springframework.org/schema/aop 
+ 						http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+ 						http://www.springframework.org/schema/mvc 
+						http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+						http://www.springframework.org/schema/cache 
+						http://www.springframework.org/schema/cache/spring-cache-4.0.xsd">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.jay.spring"/>
+
+    <bean id="springTxService" class="com.jay.spring.service.impl.SpringTxServiceImpl" >
+        <property name="dataSource" ref="dataSource"/>
+        <property name="transactionTemplate" ref="transactionTemplate"/>
+        <property name="requiresNewTransactionTemplate" ref="requiresNewTransactionTemplate"/>
+        <property name="nestedTransactionTemplate" ref="nestedTransactionTemplate"/>
+        <property name="mandatoryTransactionTemplate" ref="mandatoryTransactionTemplate"/>
+        <property name="neverTransactionTemplate" ref="neverTransactionTemplate"/>
+        <property name="notSupportedTransactionTemplate" ref="notSupportedTransactionTemplate"/>
+        <property name="supportsTransactionTemplate" ref="supportsTransactionTemplate"/>
+    </bean>
+    <bean id="springAnnoService" class="com.jay.spring.service.impl.SpringAnnoServiceImpl" >
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--引入数据库-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/spring_test"/>
+        <property name="username" value="root"/>
+        <property name="password" value="1234"/>
+    </bean>
+
+    <!-- 配置事务管理器（声明式的事务） -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--PROPAGATION_REQUIRED&#45;&#45;支持当前事务，如果当前没有事务，就新建一个事务。这是最常见的选择。-->
+    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+
+    <!--PROPAGATION_REQUIRES_NEW &#45;&#45;新建事务，如果当前存在事务，把当前事务挂起。-->
+    <bean id="requiresNewTransactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRES_NEW"/>
+    </bean>
+
+    <!--PROPAGATION_NESTED&#45;&#45;如果当前存在事务，则在嵌套事务内执行。
+    如果当前没有事务，则进行与PROPAGATION_REQUIRED类似的操作。-->
+    <bean id="nestedTransactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="propagationBehaviorName" value="PROPAGATION_NESTED"/>
+    </bean>
+
+    <!--PROPAGATION_MANDATORY&#45;&#45;支持当前事务，如果当前没有事务，就抛出异常。-->
+    <bean id="mandatoryTransactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="propagationBehaviorName" value="PROPAGATION_MANDATORY"/>
+    </bean>
+
+    <!--PROPAGATION_NEVER&#45;&#45;以非事务方式执行，如果当前存在事务，则抛出异常。-->
+
+    <bean id="neverTransactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="propagationBehaviorName" value="PROPAGATION_NEVER"/>
+    </bean>
+
+    <!--PROPAGATION_NOT_SUPPORTED&#45;&#45;以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。-->
+    <bean id="notSupportedTransactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="propagationBehaviorName" value="PROPAGATION_NOT_SUPPORTED"/>
+    </bean>
+
+    <!--PROPAGATION_SUPPORTS&#45;&#45;支持当前事务，如果当前没有事务，就以非事务方式执行。-->
+    <bean id="supportsTransactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="propagationBehaviorName" value="PROPAGATION_SUPPORTS"/>
+    </bean>
+
+
+    <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="changeLog" value="classpath:databaseChangeLog.xml"/>
+    </bean>
+
+    <!-- 基于注解的事务  -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+        <!--<tx:attributes>-->
+            <!--<tx:method name="*"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+</beans>
