@@ -11,6 +11,7 @@
     <properties>
         <spring.version>4.0.5.RELEASE</spring.version>
         <hibernate.version>4.3.5.Final</hibernate.version>
+        <jdk.version>1.8</jdk.version>
     </properties>
 
     <dependencies>
@@ -88,5 +89,15 @@
     </dependencies>
     <build>
         <finalName>springAOP-demo</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>
