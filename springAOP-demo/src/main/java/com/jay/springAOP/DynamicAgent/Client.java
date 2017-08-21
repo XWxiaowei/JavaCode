@@ -1,7 +1,7 @@
 package com.jay.springAOP.DynamicAgent;
 
+import com.jay.springAOP.DynamicAgent.impl.LogHandler;
 import com.jay.springAOP.DynamicAgent.impl.UserServiceImpl;
-import com.jay.springAOP.DynamicAgent.impl.UserServiceProxyImpl;
 import com.jay.springAOP.DynamicAgent.model.User;
 
 /**
@@ -9,10 +9,10 @@ import com.jay.springAOP.DynamicAgent.model.User;
  */
 public class Client {
     public static void main(String[] args) {
-        IuserService iuserService = new UserServiceProxyImpl(new UserServiceImpl());
+        LogHandler logHandler = new LogHandler();
+        IuserService iuserService = (IuserService) logHandler.createProxy(new UserServiceImpl());
         iuserService.findAllUser();
         iuserService.deleteUser(1);
         iuserService.insertUser(new User());
-
     }
 }

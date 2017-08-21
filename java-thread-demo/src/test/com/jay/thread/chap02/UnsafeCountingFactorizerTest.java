@@ -11,14 +11,14 @@ import javax.servlet.ServletResponse;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-
 /**
+ * 模拟多线程访问
  * Created by xiang.wei on 2017/8/17.
  */
 @RunWith(JUnit4.class)
-public class CountingFactorizerTest {
+public class UnsafeCountingFactorizerTest {
     ExecutorService exec = Executors.newFixedThreadPool(100);
-    CountingFactorizer countingFactorizer = new CountingFactorizer();
+    UnsafeCountingFactorizer countingFactorizer = new UnsafeCountingFactorizer();
 
     ServletRequest req;
     ServletResponse res;
@@ -27,17 +27,6 @@ public class CountingFactorizerTest {
         req = PowerMockito.mock(ServletRequest.class);
         res = PowerMockito.mock(ServletResponse.class);
     }
-    @Test
-    public void testGetCount() throws Exception {
-       for (int i=0;i<10;i++){
-           exec.submit(new Runnable() {
-               public void run() {
-                   System.out.println(Thread.currentThread().getName()+"/"+countingFactorizer.getCount());
-               }
-           });
-       }
-    }
-
     @Test
     public void testService() throws Exception {
         for (int i=0;i<100;i++){
@@ -55,5 +44,6 @@ public class CountingFactorizerTest {
             });
         }
         System.out.println(Thread.currentThread().getName()+"/"+countingFactorizer.getCount());
+
     }
 }
