@@ -69,7 +69,7 @@ countDown方法，当前线程调用此方法，则计数减一
 ```
 cdAnswer.countDown();  
 ```
-awaint方法，调用此方法会一直阻塞当前线程，直到计时器的值为0
+await方法，调用此方法会一直阻塞当前线程，直到计时器的值为0
 ```
 cdOrder.await();  
 ```

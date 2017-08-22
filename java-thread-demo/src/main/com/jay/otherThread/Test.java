@@ -1,5 +1,7 @@
 package com.jay.otherThread;
 
+import java.util.ArrayList;
+
 /**
  * Created by xiang.wei on 2017/8/17.
  */
@@ -21,5 +23,11 @@ public class Test extends Thread {
         Thread.sleep(2000);
         System.out.println("4");
 
+        ArrayList<Integer> integers = new ArrayList<>();
+        integers.add(1);
+        integers.add(1);
+        for (Integer integer : integers) {
+            System.out.println("当前值："+integer);
+        }
     }
 }
