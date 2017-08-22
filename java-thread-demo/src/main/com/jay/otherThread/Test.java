@@ -1,3 +1,5 @@
+package com.jay.otherThread;
+
 /**
  * Created by xiang.wei on 2017/8/17.
  */
