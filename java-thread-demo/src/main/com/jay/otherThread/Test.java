@@ -1,6 +1,7 @@
 package com.jay.otherThread;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 /**
  * Created by xiang.wei on 2017/8/17.
@@ -29,5 +30,8 @@ public class Test extends Thread {
         for (Integer integer : integers) {
             System.out.println("当前值："+integer);
         }
+
+        Vector<String> objects = new Vector<>();
+
     }
 }
