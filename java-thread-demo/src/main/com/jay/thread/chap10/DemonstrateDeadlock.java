@@ -1,69 +1,44 @@
 package com.jay.thread.chap10;
 
+import com.jay.thread.chap10.DynamicOrderDeadlock.Account;
+import com.jay.thread.chap10.DynamicOrderDeadlock.DollarAmount;
+import java.util.Random;
+
 /**
- * 动态的锁顺序死锁，容易发生死锁
- * 例如：如果两个线程同时调用transferMoney,
- * 其中一个线程从X向Y转账，另一个线程从Y向X转账，
- * 那么就会发生死锁
- * A：transferMoney(myAccount,yourAccount,10)
- * B:transferMoney(yourAccount,myAccount,20)
- * <p>
- * 如果执行时序不当，那么A可能获得myAccount的锁并等待yourAccount
- * 的锁，然而B此时持有yourAccount的锁，并正在等待myAccount的锁
+ * 在典型条件下会发生死锁的循环
  * Created by xiang.wei on 2017/8/28
  */
 public class DemonstrateDeadlock {
+    private static final int NUM_THREADS=20;
+    private static final int NUM_ACCOUNTS=5;
+    private static final int NUM_ITERATIONS = 1000000;
 
-    public static void transferMoney(Account fromAccount,
-                                     Account toAccount,
-                                     DollarAmount amount) throws InsufficentFundsException {
-        synchronized (fromAccount) {
-            synchronized (toAccount) {
-                if (fromAccount.getBalance().compareTo(amount)<0) {
-                    throw new InsufficentFundsException();
-                } else {
-                    fromAccount.debit(amount);
-                    toAccount.credit(amount);
+    public static void main(String[] args) {
+        final Random rnd = new Random();
+        final Account[] accounts = new Account[NUM_ACCOUNTS];
+
+        for (int i = 0; i < accounts.length; i++) {
+            accounts[i] = new Account();
+        }
+
+        class TransferThread extends Thread {
+            @Override
+            public void run() {
+                for (int i = 0; i <NUM_ITERATIONS ; i++) {
+                    int fromAcct = rnd.nextInt(NUM_ACCOUNTS);
+                    int toAcct = rnd.nextInt(NUM_ACCOUNTS);
+                    DollarAmount amount = new DollarAmount(rnd.nextInt(1000));
+                    try {
+                        DynamicOrderDeadlock.transferMoney(accounts[fromAcct],accounts[toAcct],amount);
+                    } catch (DynamicOrderDeadlock.InsufficentFundsException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
-
-    }
-
-    static class DollarAmount implements Comparable<DollarAmount> {
-        public DollarAmount add(DollarAmount amount) {
-            return null;
-        }
-
-        public DollarAmount subtract(DollarAmount amount) {
-            return null;
-        }
-
-        @Override
-        public int compareTo(DollarAmount o) {
-            return 0;
+        for (int i = 0; i <NUM_THREADS ; i++) {
+            new TransferThread().start();
         }
     }
-
-
-    static class Account {
-        private DollarAmount balance;
-
-        void debit(DollarAmount amount) {
-            balance = balance.subtract(amount);
-        }
-
-        void credit(DollarAmount amount) {
-            balance = balance.add(amount);
-        }
-
-        public DollarAmount getBalance() {
-            return balance;
-        }
-    }
-
-    static class InsufficentFundsException extends Exception {
-    }
-
 
 }
