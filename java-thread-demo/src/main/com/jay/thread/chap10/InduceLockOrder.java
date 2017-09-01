@@ -1,5 +1,7 @@
 package com.jay.thread.chap10;
 
+import net.jcip.annotations.ThreadSafe;
+
 /**
  * 在制定锁的顺序时，可以使用System.identityHashCode方法，该方法将返回有Object.hashCode
  * 返回的值。在极少数情况下，两个对象可能拥有相同的散列值，此时必须通过某种任意的方法来决定锁的
@@ -7,6 +9,7 @@ package com.jay.thread.chap10;
  * <p>
  * Created by xiang.wei on 2017/8/28
  */
+@ThreadSafe
 public class InduceLockOrder {
     private static final Object tieLock = new Object();
 
