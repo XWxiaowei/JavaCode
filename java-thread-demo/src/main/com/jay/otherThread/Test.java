@@ -1,6 +1,9 @@
 package com.jay.otherThread;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.IdentityHashMap;
+import java.util.Map;
 import java.util.Vector;
 
 /**
@@ -8,6 +11,8 @@ import java.util.Vector;
  */
 public class Test extends Thread {
     public static void main(String[] args) throws InterruptedException {
+        Map<String, String> hashMap = new HashMap<>();
+        Map<String, String> identityHashMap = new IdentityHashMap<>();
         new Thread(new Runnable() {
             public void run() {
                 System.out.println("1");
