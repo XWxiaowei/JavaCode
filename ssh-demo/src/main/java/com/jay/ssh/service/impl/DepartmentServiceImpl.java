@@ -5,12 +5,15 @@ import com.jay.ssh.entity.Department;
 import com.jay.ssh.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by xiang.wei on 2017/10/14
  */
+//没有加事务边界的类默认为只读
+@Transactional
 @Service("departmentService{")
 public class DepartmentServiceImpl  implements DepartmentService{
     @Autowired

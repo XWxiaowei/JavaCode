@@ -1,68 +1,62 @@
 package com.jay.ssh.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * Created by xiang.wei on 2017/10/14
+ * Created by xiang.wei on 2017/10/15
  */
-@Entity
 public class Department {
-    private int did;
+    private static final long serialVersionUID = 1L;
+    private Integer did;
     private String dname;
     private String ddesc;
+    private Set<Employee> employees = new HashSet<Employee>();
 
-    @Id
-    @Column(name = "did")
-    public int getDid() {
-        return did;
+    // Constructors
+
+    /** default constructor */
+    public Department() {
     }
 
-    public void setDid(int did) {
+    /** full constructor */
+    public Department(String dname, String ddesc, Set employees) {
+        this.dname = dname;
+        this.ddesc = ddesc;
+        this.employees = employees;
+    }
+
+    // Property accessors
+
+    public Integer getDid() {
+        return this.did;
+    }
+
+    public void setDid(Integer did) {
         this.did = did;
     }
 
-    @Basic
-    @Column(name = "dname")
     public String getDname() {
-        return dname;
+        return this.dname;
     }
 
     public void setDname(String dname) {
         this.dname = dname;
     }
 
-    @Basic
-    @Column(name = "ddesc")
     public String getDdesc() {
-        return ddesc;
+        return this.ddesc;
     }
 
     public void setDdesc(String ddesc) {
         this.ddesc = ddesc;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Department that = (Department) o;
-
-        if (did != that.did) return false;
-        if (dname != null ? !dname.equals(that.dname) : that.dname != null) return false;
-        if (ddesc != null ? !ddesc.equals(that.ddesc) : that.ddesc != null) return false;
-
-        return true;
+    public Set getEmployees() {
+        return this.employees;
     }
 
-    @Override
-    public int hashCode() {
-        int result = did;
-        result = 31 * result + (dname != null ? dname.hashCode() : 0);
-        result = 31 * result + (ddesc != null ? ddesc.hashCode() : 0);
-        return result;
+    public void setEmployees(Set employees) {
+        this.employees = employees;
     }
 }

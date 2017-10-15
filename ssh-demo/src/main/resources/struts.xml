@@ -14,7 +14,7 @@
             <!--</action>-->
     <!--</package>-->
     <package name="basePackage" extends="struts-default">
-        <action name="department_*" class="departmentAction" method="{1}">
+        <action name="department_*" class="com.jay.ssh.action.DepartmentAction" method="{1}">
             <result name="findAll">/jsp/department/listDepartment.jsp</result>
             <result name="goAddDepartment">/jsp/department/addDepartment.jsp</result>
             <result name="addSuccess" type="redirect">department_findAll.action</result>

@@ -4,12 +4,14 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.sql.Timestamp;
 
 /**
- * Created by xiang.wei on 2017/10/14
+ * Created by xiang.wei on 2017/10/15
  */
 @Entity
+@Table(name = "sh_employee", schema = "ssh_employee")
 public class Employee {
     private int eid;
     private int did;
@@ -22,7 +24,7 @@ public class Employee {
     private String password;
 
     @Id
-    @Column(name = "eid")
+    @Column(name = "eid", nullable = false)
     public int getEid() {
         return eid;
     }
@@ -32,7 +34,7 @@ public class Employee {
     }
 
     @Basic
-    @Column(name = "did")
+    @Column(name = "did", nullable = false)
     public int getDid() {
         return did;
     }
@@ -42,7 +44,7 @@ public class Employee {
     }
 
     @Basic
-    @Column(name = "ename")
+    @Column(name = "ename", nullable = true, length = 150)
     public String getEname() {
         return ename;
     }
@@ -52,7 +54,7 @@ public class Employee {
     }
 
     @Basic
-    @Column(name = "sex")
+    @Column(name = "sex", nullable = true, length = 10)
     public String getSex() {
         return sex;
     }
@@ -62,7 +64,7 @@ public class Employee {
     }
 
     @Basic
-    @Column(name = "birthday")
+    @Column(name = "birthday", nullable = true)
     public Timestamp getBirthday() {
         return birthday;
     }
@@ -72,7 +74,7 @@ public class Employee {
     }
 
     @Basic
-    @Column(name = "joinDate")
+    @Column(name = "joinDate", nullable = true)
     public Timestamp getJoinDate() {
         return joinDate;
     }
@@ -82,7 +84,7 @@ public class Employee {
     }
 
     @Basic
-    @Column(name = "eno")
+    @Column(name = "eno", nullable = true, length = 150)
     public String getEno() {
         return eno;
     }
@@ -92,7 +94,7 @@ public class Employee {
     }
 
     @Basic
-    @Column(name = "username")
+    @Column(name = "username", nullable = true, length = 150)
     public String getUsername() {
         return username;
     }
@@ -102,7 +104,7 @@ public class Employee {
     }
 
     @Basic
-    @Column(name = "password")
+    @Column(name = "password", nullable = true, length = 150)
     public String getPassword() {
         return password;
     }

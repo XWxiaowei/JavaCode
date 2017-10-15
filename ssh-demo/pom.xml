@@ -108,6 +108,28 @@
     </dependency>
   </dependencies>
   <build>
+    <resources>
+      <!--对于Maven工程，编译的工作是由Maven程序来完成的，
+      而Maven默认只会把src/main/resources文件夹下的文件拷贝到target/classes文件夹下，
+      所以上图的.hbm.xml都不会被复制到/target/calsses文件夹下
+      ，所以Hibernate框架在运行的时候，就会报找不到*.hbm.xml的错误。-->
+      <!--解决方案：-->
+      <!--在pom.xml中显式地告诉Maven把什么资源文件复制到target/classes文件夹下。-->
+       <resource>
+         <directory>src/main/java</directory>
+         <includes>
+           <include>**/*.xml</include>
+         </includes>
+         <filtering>true</filtering>
+       </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*.xml</include>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+    </resources>
     <plugins>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>

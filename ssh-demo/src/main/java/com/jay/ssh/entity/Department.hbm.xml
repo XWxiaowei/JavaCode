@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.jay.ssh.entity.Department" table="sh_department" schema="ssh_employee">
+        <id name="did">
+            <column name="did" sql-type="int(11)"/>
+            <generator class="native" />
+        </id>
+        <property name="dname">
+            <column name="dname" sql-type="varchar(150)" length="150"/>
+        </property>
+        <property name="ddesc">
+            <column name="ddesc" sql-type="varchar(150)" length="150"/>
+        </property>
+    </class>
+</hibernate-mapping>

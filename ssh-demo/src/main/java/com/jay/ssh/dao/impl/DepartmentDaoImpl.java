@@ -2,6 +2,7 @@ package com.jay.ssh.dao.impl;
 
 import com.jay.ssh.dao.DepartmentDao;
 import com.jay.ssh.entity.Department;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -24,7 +25,11 @@ public class DepartmentDaoImpl extends HibernateDaoSupport implements Department
     //TODO hibernate的数据操作接口
     @Override
     public List<Department> findAll() {
-        return (List<Department>) this.getHibernateTemplate().find("select * from Department");
+//        String sql = "SELECT * from sh_department";
+//        Query query = getSessionFactory().getCurrentSession().createSQLQuery(sql);
+//        List<Department> departmentList = query.list();
+//        return departmentList;
+        return (List<Department>) this.getHibernateTemplate().find("from Department");
     }
 
     @Override
