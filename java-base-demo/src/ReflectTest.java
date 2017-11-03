@@ -34,6 +34,7 @@ public class ReflectTest {
             for (Method method : methods) {
                 System.out.println("获取所有方法"+method);
             }
+            
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {

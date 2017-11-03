@@ -20,27 +20,26 @@ public class StringTest {
         System.out.println(str);
 
 
-
 //        string 常用方法练习
         String learn1 = "learn1";
         String learn1_temp = "Learn1";
         String learn2 = "learn2";
 //        equal
-        System.out.println("equals:"+learn1.equals(learn2));
+        System.out.println("equals:" + learn1.equals(learn2));
 //        equalsIgnoreCase
-        System.out.println("equalsIgnoreCase:"+learn1.equalsIgnoreCase(learn1_temp));
-        System.out.println("startsWith:"+learn1.startsWith("l"));
-        System.out.println("endsWith:"+learn1.endsWith("1"));
+        System.out.println("equalsIgnoreCase:" + learn1.equalsIgnoreCase(learn1_temp));
+        System.out.println("startsWith:" + learn1.startsWith("l"));
+        System.out.println("endsWith:" + learn1.endsWith("1"));
 //        返回与字符串str或代码点cp匹配的第一个子串的开始位置。这个位置从索引0或fromIndex开始计算。如果在原始串中不存在str,返回-1
-        System.out.println("indexOf:"+learn1.indexOf("a"));
-        System.out.println("lastIndexOf1:"+learn1.lastIndexOf("1"));
-        System.out.println("lastIndexOf2:"+learn1.lastIndexOf("2"));
-        System.out.println("length:"+learn1.length());
+        System.out.println("indexOf:" + learn1.indexOf("a"));
+        System.out.println("lastIndexOf1:" + learn1.lastIndexOf("1"));
+        System.out.println("lastIndexOf2:" + learn1.lastIndexOf("2"));
+        System.out.println("length:" + learn1.length());
 
-        System.out.println("substring(2):"+learn1.substring(2));
-        System.out.println("substring(0,3)"+learn1.substring(0,3));
+        System.out.println("substring(2):" + learn1.substring(2));
+        System.out.println("substring(0,3)" + learn1.substring(0, 3));
 
-        System.out.println("toUpperCase():"+learn1.toUpperCase());
+        System.out.println("toUpperCase():" + learn1.toUpperCase());
 
         StringBuilder builder = new StringBuilder("121");
         String toString = builder.toString();
@@ -48,5 +47,13 @@ public class StringTest {
         Object object = new Object();
         object.toString();
 
+
+        //hashCode
+        String s = "OK";
+        StringBuilder sb = new StringBuilder(s);
+        System.out.println(s.hashCode() + " " + sb.hashCode());
+        String t = new String("OK");
+        StringBuilder tb = new StringBuilder(t);
+        System.out.println(t.hashCode() + " " + tb.hashCode());
     }
 }
