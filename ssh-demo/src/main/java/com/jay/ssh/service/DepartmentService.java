@@ -23,7 +23,7 @@ public interface DepartmentService {
     /**
      * @param department
      */
-    void sava(Department department);
+    void save(Department department);
 
     /**
      * @param department

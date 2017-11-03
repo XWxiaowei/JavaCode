@@ -31,11 +31,11 @@
     <table style="font-size:16px"width="600px">
         <tr>
             <td width="30%" align="right">部门名称：</td>
-            <td><s:textfield name="dname"/></td>
+            <td><s:textfield name="department.dname"/></td>
         </tr>
         <tr>
             <td width="30%" align="right">部门介绍：</td>
-            <td><s:textarea rows="5" cols="50" name="ddesc"/></td>
+            <td><s:textarea rows="5" cols="50" name="department.ddesc"/></td>
         </tr>
     </table>
 </s:form>

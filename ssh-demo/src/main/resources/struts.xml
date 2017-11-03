@@ -7,12 +7,9 @@
 <struts>
     <!-- 开发模式(修改struts.xml不用重启服务器） -->
     <constant name="struts.devMode" value="true"/>
-    <!--<package name="default" extends="struts-default" namespace="/">-->
-            <!--<action name="jsonAction" class="com.jay.ssh.action" method="testJson">-->
-                <!--<result name="test1">index.jsp</result>-->
-                <!--<result name="success">success.jsp</result>-->
-            <!--</action>-->
-    <!--</package>-->
+    <package name="jsonPackage" extends="json-default">
+        <action name="json_findAll" class="com.jay.ssh.action.JsonAction" method="findAll"></action>
+    </package>
     <package name="basePackage" extends="struts-default">
         <action name="department_*" class="com.jay.ssh.action.DepartmentAction" method="{1}">
             <result name="findAll">/jsp/department/listDepartment.jsp</result>

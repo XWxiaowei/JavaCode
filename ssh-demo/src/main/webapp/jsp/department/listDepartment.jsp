@@ -9,7 +9,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>部门列表</title>
 </head>
 <body>
     <table border="0" width="900px">
@@ -25,6 +25,7 @@
     <table cellspacing="0" border="1" class="table1">
         <thead>
             <th width="300">部门名称</th>
+            <th width="300">描述</th>
             <th width="300">编辑</th>
             <th width="300">删除</th>
         </thead>
@@ -32,6 +33,7 @@
             <s:iterator value="departmentList" var="department">
                 <tr>
                     <td align="center"><s:property value="#department.dname"/></td>
+                    <td align="center"><s:property value="#department.ddesc"/></td>
                     <td align="center">
                         <!-- 编辑部门update-->
                         <a href="department_findById.action?did=<s:property value="#department.did"/>">

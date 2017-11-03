@@ -4,15 +4,17 @@ import com.jay.ssh.dao.DepartmentDao;
 import com.jay.ssh.entity.Department;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
-import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 /**
  *
- * Created by xiang.wei on 2017/10/14
+ *@author   Created by xiang.wei on 2017/10/14
  */
 @Repository("departmentDao")
 public class DepartmentDaoImpl extends HibernateDaoSupport implements DepartmentDao {
@@ -29,7 +31,12 @@ public class DepartmentDaoImpl extends HibernateDaoSupport implements Department
 //        Query query = getSessionFactory().getCurrentSession().createSQLQuery(sql);
 //        List<Department> departmentList = query.list();
 //        return departmentList;
-        return (List<Department>) this.getHibernateTemplate().find("from Department");
+//        return (List<Department>) this.getHibernateTemplate().find("from Department");
+
+        String hql = "from Department";
+        Query query = getSessionFactory().getCurrentSession().createQuery(hql);
+        List<Department> departmentList = query.list();
+        return departmentList;
     }
 
     @Override

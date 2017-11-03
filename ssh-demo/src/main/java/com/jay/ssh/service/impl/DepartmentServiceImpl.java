@@ -10,11 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created by xiang.wei on 2017/10/14
+ * @author  Created by xiang.wei on 2017/10/14
  */
-//没有加事务边界的类默认为只读
 @Transactional
-@Service("departmentService{")
+@Service("departmentService")
 public class DepartmentServiceImpl  implements DepartmentService{
     @Autowired
     private DepartmentDao departmentDao;
@@ -39,7 +38,7 @@ public class DepartmentServiceImpl  implements DepartmentService{
     }
 
     @Override
-    public void sava(Department department) {
+    public void save(Department department) {
         try {
             departmentDao.insert(department);
         } catch (Exception e) {

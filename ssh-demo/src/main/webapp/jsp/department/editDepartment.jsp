@@ -24,11 +24,11 @@
     </tr>
 </table>
 <s:form id="saveForm" action="department_update" method="post" namespace="/">
-    <s:hidden name="did" value="%{model.did}"></s:hidden>
+    <s:hidden name="department.did" value="%{department.did}"></s:hidden>
     <table style="font-size:16px" width="600px">
         <tr>
             <td width="30%" align="right">部门名称：</td>
-            <td><s:textfield name="dname" value="%{model.dname}"/></td>
+            <td><s:textfield name="department.dname" value="%{department.dname}"/></td>
         </tr>
         <tr>
             <td width="30%" align="right">部门介绍：</td>
@@ -36,7 +36,7 @@
         </tr>
         <tr>
             <td width="30%" align="right"></td>
-            <td><s:textarea rows="5" cols="50" name="ddesc" value="%{model.ddesc}"></s:textarea></td>
+            <td><s:textarea rows="5" cols="50" name="department.ddesc" value="%{department.ddesc}"></s:textarea></td>
         </tr>
     </table>
 </s:form>

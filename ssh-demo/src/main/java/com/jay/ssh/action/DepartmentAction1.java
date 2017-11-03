@@ -2,6 +2,7 @@ package com.jay.ssh.action;
 
 import com.jay.ssh.entity.Department;
 import com.jay.ssh.service.DepartmentService;
+import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,21 +13,19 @@ import java.util.List;
  * @author  xiang.wei on 2017/10/14
  * 模型驱动
  */
-@Action(value = "departmentAction")
-public class DepartmentAction  extends BaseAction{
+@Action(value = "departmentAction1")
+public class DepartmentAction1 extends BaseAction implements ModelDriven<Department>{
     @Autowired
     private DepartmentService departmentService;
+    /**
+     * 模型驱动
+     */
+    private Department department = new Department();
 
-    private Department department;
-
-    public Department getDepartment() {
+    @Override
+    public Department getModel() {
         return department;
     }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
     private List<Department> departmentList;
 
     public List<Department> getDepartmentList() {
