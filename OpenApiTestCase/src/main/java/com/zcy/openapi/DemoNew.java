@@ -18,12 +18,10 @@ import java.util.Map;
  * update on 20160920
  */
 public class DemoNew {
-    private static final String API_GATEWAY = "http://sandbox.zcy.gov.cn/";
-    //private static final String API_GATEWAY = "http://120.26.97.5:8080/";
-//    private static final String SECRET  = "F4Cbc4nnKMJg";
-//    private static final String APP_KEY = "354232";
-    private static final String SECRET  = "ZHFE50VtUuku";
-    private static final String APP_KEY = "659913";
+    private static final String API_GATEWAY = "xxxx";
+    private static final String SECRET = "xxx";
+    private static final String APP_KEY = "xxxx";
+
     public static void main(String[] args) throws Exception {
 //        doGet();
 //        doPost();
