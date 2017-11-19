@@ -58,6 +58,11 @@ public class ZcyGoodService {
 		SkuAttribute skuAttribute10 = new SkuAttribute("是","14650","是否中小企业产品");
 		SkuAttribute skuAttribute11 = new SkuAttribute("是","14649","是否环保产品");
 		SkuAttribute skuAttribute12 = new SkuAttribute("是","14651","是否残疾人庇护产品");
+		SkuAttribute skuAttribute13 = new SkuAttribute("xl", "28256", "型号");
+		SkuAttribute skuAttribute14= new SkuAttribute("苹果", "28255", "品牌");
+		SkuAttribute skuAttribute15= new SkuAttribute("需要", "28261", "是否需要安装");
+		SkuAttribute skuAttribute16= new SkuAttribute("Haier", "28260", "生产厂商");
+
 
 		ItemDetail itemDetail = new ItemDetail();
 		itemDetail.getImages().add("http://zcy-item.img-cn-hangzhou.aliyuncs.com/2/2-1发商品-默认.jpg");
@@ -85,6 +90,10 @@ public class ZcyGoodService {
 		requestData.getOtherAttributes().add(skuAttribute10);
 		requestData.getOtherAttributes().add(skuAttribute11);
 		requestData.getOtherAttributes().add(skuAttribute12);
+		requestData.getOtherAttributes().add(skuAttribute13);
+		requestData.getOtherAttributes().add(skuAttribute14);
+		requestData.getOtherAttributes().add(skuAttribute15);
+		requestData.getOtherAttributes().add(skuAttribute16);
 
         /*组装Body参数*/
 		Map<String, Object> bodyMap = new HashMap<String, Object>();

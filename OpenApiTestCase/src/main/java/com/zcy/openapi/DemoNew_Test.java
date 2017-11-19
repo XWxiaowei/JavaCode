@@ -18,9 +18,13 @@ import java.util.Map;
  * update on 20160920
  */
 public class DemoNew_Test {
-    private static final String API_GATEWAY = "xxxx";
-    private static final String SECRET = "xxx";
-    private static final String APP_KEY = "xxxx";
+//    private static final String API_GATEWAY = "xxxx";
+//    private static final String SECRET = "xxx";
+//    private static final String APP_KEY = "xxxx";
+
+    private static final String API_GATEWAY = "http://sandbox.zcy.gov.cn/";
+    private static final String SECRET = "ZHFE50VtUuku";
+    private static final String APP_KEY = "659913";
 
     public static void main(String[] args) throws Exception {
         doPostCatalog();
@@ -35,7 +39,7 @@ public class DemoNew_Test {
         /*组装body参数*/
         Map<String, Object> bodyMap = new HashMap<String, Object>();
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("categoryId", 75);
+        jsonObject.put("categoryId", 992);
         bodyMap.put("_data_", jsonObject.toString());
         zcyOpenRequest.setParamMap(bodyMap);
           /*发送http request*/
@@ -53,6 +57,9 @@ public class DemoNew_Test {
             }
         }
         System.out.println("删除后!"+attrsList.size());
+        System.out.println("删除后!"+JSON.toJSONString(attrsList));
     }
+
+
 
 }

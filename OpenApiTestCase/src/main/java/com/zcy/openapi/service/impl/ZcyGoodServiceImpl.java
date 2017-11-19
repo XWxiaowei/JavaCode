@@ -1,25 +1,26 @@
 package com.zcy.openapi.service.impl;
 
-import com.aisino.global.context.common.ex.ServiceException;
-import com.aisino.global.context.common.logs.Logger;
-import com.aisino.projects.zcy.code.constant.ZcyConstant;
-import com.aisino.projects.zcy.code.service.goods.model.Attrs;
-import com.aisino.projects.zcy.code.service.goods.model.RequestData;
-import com.aisino.projects.zcy.code.service.goods.model.Sku;
-import com.aisino.projects.zcy.code.service.goods.service.ZcyGoodService;
-import com.aisino.projects.zcy.openapi.ZcyOpenClient;
-import com.aisino.projects.zcy.openapi.ZcyOpenRequest;
-import com.aisino.projects.zcy.openapi.http.HttpMethod;
-import com.aisino.projects.zcy.openapi.zoss.ZcyOssClientUtil;
-import com.aisino.projects.zcy.openapi.zoss.model.FileContentType;
-import com.aisino.projects.zcy.openapi.zoss.model.FileInfo;
-import com.aisino.projects.zcy.openapi.zoss.model.ZcyItemRequest;
-import com.aisino.projects.zcy.openapi.zoss.model.ZcyResponse;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
+import com.aliyun.oss.ServiceException;
+import com.zcy.openapi.ZcyOpenClient;
+import com.zcy.openapi.ZcyOpenRequest;
+import com.zcy.openapi.constant.ZcyConstant;
+import com.zcy.openapi.http.HttpMethod;
+import com.zcy.openapi.service.ZcyGoodService;
+import com.zcy.openapi.zoss.ZcyOssClientUtil;
+import com.zcy.openapi.zoss.model.FileContentType;
+import com.zcy.openapi.zoss.model.FileInfo;
+import com.zcy.openapi.zoss.model.ZcyItemRequest;
+import com.zcy.openapi.zoss.model.ZcyResponse;
+import model.Attrs;
+import model.RequestData;
+import model.Sku;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -35,7 +36,6 @@ import java.util.Map;
  * @author xiang.wei
  * @create 2017/11/2 9:31
  */
-@Service("zcyGoodService")
 public class ZcyGoodServiceImpl implements ZcyGoodService {
     private Logger log = Logger.getLogger("order_log");
     private static final ZcyOpenRequest zcyOpenRequest = new ZcyOpenRequest(
@@ -56,14 +56,14 @@ public class ZcyGoodServiceImpl implements ZcyGoodService {
             jsonObject.put("categoryId", categoryId);
             bodyMap.put("_data_", jsonObject.toString());
             zcyOpenRequest.setParamMap(bodyMap);
-            log.info("政采云查询类目属性接口请求参数为={}", jsonObject.toString());
+            log.info("政采云查询类目属性接口请求参数为={}"+jsonObject.toString());
             /*发送http request*/
             String result = ZcyOpenClient.excute(zcyOpenRequest);
-            log.info("政采云查询类目属性接口返回结果为={}", result);
+            log.info("政采云查询类目属性接口返回结果为={}"+result);
             JSONObject resultJson = JSONObject.parseObject(result);
             //接口返回错误
             if (StringUtils.isNotBlank(resultJson.getString("error_response"))) {
-                log.error("政采云查询类目属性接口返回错误={}", resultJson.getString("resultMsg"));
+                log.error("政采云查询类目属性接口返回错误={}"+resultJson.getString("resultMsg"));
                 return null;
             }
             attrList = JSON.parseArray(resultJson.getString("data_response"), Attrs.class);
@@ -79,7 +79,7 @@ public class ZcyGoodServiceImpl implements ZcyGoodService {
                 }
             }
         } catch (Exception e) {
-            log.error("ZcyGoodServiceImpl getCategoryAttrs调用政采云查询类目属性接口出错={}", e.getMessage());
+            log.error("ZcyGoodServiceImpl getCategoryAttrs调用政采云查询类目属性接口出错={}"+e.getMessage());
             return null;
         }
         return attrList;
@@ -102,10 +102,10 @@ public class ZcyGoodServiceImpl implements ZcyGoodService {
             zcyOpenRequest.setUri(ZcyConstant.getAddGoodsUrl());
             zcyOpenRequest.setMethod(HttpMethod.POST);
             bodyMap.put("_data_", jsonObject.toString());
-            log.info("政采云创建商品接口请求参数为={}", jsonObject.toString());
+            log.info("政采云创建商品接口请求参数为={}"+jsonObject.toString());
             zcyOpenRequest.setParamMap(bodyMap);
             result = ZcyOpenClient.excute(zcyOpenRequest);
-            log.info("政采云创建商品接口返回为={}", result);
+            log.info("政采云创建商品接口返回为={}"+result);
             JSONObject resultJson = JSON.parseObject(result);
             Boolean success = resultJson.getBoolean("success");
             if (success != null && success) {
@@ -114,7 +114,7 @@ public class ZcyGoodServiceImpl implements ZcyGoodService {
                 return resultJson.getString("error");
             }
         } catch (Exception e) {
-            log.info("调用政采云创建商品接口出错", e.getMessage());
+            log.info("调用政采云创建商品接口出错"+e.getMessage());
             return "调用接口出错";
         }
     }
@@ -135,13 +135,13 @@ public class ZcyGoodServiceImpl implements ZcyGoodService {
             fileInfo.setInputStream(fileInputStream);
             fileInfo.setSize(Long.valueOf(fileInputStream.available()));
             zcyOssRequest.setFileInfo(fileInfo);
-            log.info("上传图片请求参数:", JSON.toJSONString(zcyOssRequest));
+            log.info("上传图片请求参数:"+JSON.toJSONString(zcyOssRequest));
             //顺利执行完毕,OSS会自动关闭InputStream,但为了防止异常情况下IO未能及时关闭,请用户自行实现IO资源关闭.
             ZcyResponse<String> response = zcyOssClientUtil.putItemImg(zcyOssRequest);
             result.put("response:", response);
-            log.info("上传图片返回参数为：", result.toString());
+            log.info("上传图片返回参数为："+result.toString());
         } catch (IOException e) {
-            log.error("调用图片上传接口出现异常={}", e.getMessage());
+            log.error("调用图片上传接口出现异常={}"+e.getMessage());
             return false;
         } finally {
             if (fileInputStream != null) {
@@ -168,10 +168,10 @@ public class ZcyGoodServiceImpl implements ZcyGoodService {
             zcyOpenRequest.setUri(ZcyConstant.getUpdateGoodsUrl());
             zcyOpenRequest.setMethod(HttpMethod.POST);
             bodyMap.put("_data_", jsonObject.toString());
-            log.info("政采云更新商品接口请求参数为={}", jsonObject.toString());
+            log.info("政采云更新商品接口请求参数为={}"+jsonObject.toString());
             zcyOpenRequest.setParamMap(bodyMap);
             result = ZcyOpenClient.excute(zcyOpenRequest);
-            log.info("政采云更新商品接口返回为={}", result);
+            log.info("政采云更新商品接口返回为={}"+result);
             JSONObject resultJson = JSON.parseObject(result);
             //成功标识
             Boolean success = resultJson.getBoolean("success");
@@ -181,7 +181,7 @@ public class ZcyGoodServiceImpl implements ZcyGoodService {
                 return false;
             }
         } catch (Exception e) {
-            log.info("调用政采云更新商品接口出错", e.getMessage());
+            log.info("调用政采云更新商品接口出错"+e.getMessage());
             return false;
         }
     }
@@ -198,10 +198,10 @@ public class ZcyGoodServiceImpl implements ZcyGoodService {
             zcyOpenRequest.setUri(ZcyConstant.getUpdateStockUrl());
             zcyOpenRequest.setMethod(HttpMethod.POST);
             bodyMap.put("_data_", jsonObject.toString());
-            log.info("政采云更新库存接口请求参数为={}", jsonObject.toString());
+            log.info("政采云更新库存接口请求参数为={}"+jsonObject.toString());
             zcyOpenRequest.setParamMap(bodyMap);
             result = ZcyOpenClient.excute(zcyOpenRequest);
-            log.info("政采云更新库存接口返回为={}", result);
+            log.info("政采云更新库存接口返回为={}"+result);
             JSONObject resultJson = JSON.parseObject(result);
             Boolean success = resultJson.getBoolean("success");
             if (success != null && success) {
@@ -210,7 +210,7 @@ public class ZcyGoodServiceImpl implements ZcyGoodService {
                 return false;
             }
         } catch (Exception e) {
-            log.info("调用政采云更新库存接口出错", e.getMessage());
+            log.info("调用政采云更新库存接口出错"+e.getMessage());
             return false;
         }
     }
