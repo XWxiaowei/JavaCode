@@ -18,13 +18,9 @@ import java.util.Map;
  * update on 20160920
  */
 public class DemoNew_Test {
-//    private static final String API_GATEWAY = "xxxx";
-//    private static final String SECRET = "xxx";
-//    private static final String APP_KEY = "xxxx";
-
-    private static final String API_GATEWAY = "http://sandbox.zcy.gov.cn/";
-    private static final String SECRET = "ZHFE50VtUuku";
-    private static final String APP_KEY = "659913";
+   private static final String API_GATEWAY = "xxxx";
+   private static final String SECRET = "xxx";
+   private static final String APP_KEY = "xxxx";
 
     public static void main(String[] args) throws Exception {
         doPostCatalog();
