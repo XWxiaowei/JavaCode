@@ -1,9 +1,3 @@
-# TempCode
-
-练习用
-
-存放一些临时的程序
-
-spring-tx_demo 的博客地址：http://www.cnblogs.com/Fly-Bob/p/7347206.html
-
-springAOP-demo 的博客地址:http://www.cnblogs.com/Fly-Bob/p/7368129.html
+##  Java 学习仓库
+##  说明
+该仓库主要是存储我学习Java时做的相关demo，包括多线程的demo，NIO的demo，有兴趣的朋友可以fork看看
