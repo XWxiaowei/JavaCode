@@ -13,8 +13,16 @@ import java.util.List;
  * Created by xiang.wei on 2017/12/23
  */
 public class MyPluginAdapter extends PluginAdapter{
+    public MyPluginAdapter() {
+    }
+
+    /**
+     * 必须要返回true,不然，自定义的方法不执行
+     * @param list
+     * @return
+     */
     public boolean validate(List<String> list) {
-        return false;
+        return true;
     }
     @Override
     public boolean sqlMapInsertSelectiveElementGenerated(XmlElement element, IntrospectedTable introspectedTable) {
@@ -30,4 +38,5 @@ public class MyPluginAdapter extends PluginAdapter{
     public boolean clientInsertSelectiveMethodGenerated(Method method, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         return false;
     }
+
 }

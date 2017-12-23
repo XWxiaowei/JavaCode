@@ -9,6 +9,7 @@
     <context id="DB2Tables"   targetRuntime="MyBatis3">
         <!--自定义设置-->
         <plugin type="com.jay.xiang.MyPluginAdapter">
+
         </plugin>
         <!--文档注释-->
         <commentGenerator type="com.jay.xiang.MyCommentGenerator">
