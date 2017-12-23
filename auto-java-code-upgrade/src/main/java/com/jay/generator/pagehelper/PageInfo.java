@@ -1,9 +1,9 @@
-package com.jay.xiang.pagehelper;
+package com.jay.generator.pagehelper;
 
 import java.util.List;
 
 /**
- * @author xiang.wei
+ * @author generator.wei
  * @param <T>
  */
 public class PageInfo<T>{

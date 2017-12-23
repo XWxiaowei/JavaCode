@@ -6,7 +6,7 @@
 //
 //
 ///**
-// * @author xiang.wei
+// * @author generator.wei
 // * @create 2017/12/7 14:03
 // */
 //public interface OrderSyncToCrmService {

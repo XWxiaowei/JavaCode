@@ -1,4 +1,4 @@
-package com.jay.xiang;
+package com.jay.generator.internal;
 
 import org.apache.commons.lang3.StringUtils;
 import org.mybatis.generator.api.IntrospectedColumn;
@@ -21,7 +21,7 @@ import java.util.Properties;
 import static org.mybatis.generator.internal.util.StringUtility.isTrue;
 
 /**
- * @author xiang.wei
+ * @author generator.wei
  * @create 2017/12/7 15:24
  */
 public class MyCommentGenerator extends DefaultCommentGenerator {

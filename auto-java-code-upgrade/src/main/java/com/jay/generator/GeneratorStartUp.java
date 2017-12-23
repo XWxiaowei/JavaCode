@@ -1,4 +1,4 @@
-package com.jay.xiang;
+package com.jay.generator;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author xiang.wei
+ * @author generator.wei
  * @create 2017/12/7 15:45
  */
 public class GeneratorStartUp {

@@ -1,5 +1,6 @@
-package com.jay.xiang;
+package com.jay.generator.api;
 
+import org.mybatis.generator.api.GeneratedJavaFile;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.java.Interface;
@@ -7,10 +8,11 @@ import org.mybatis.generator.api.dom.java.Method;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by xiang.wei on 2017/12/23
+ * Created by generator.wei on 2017/12/23
  */
 public class MyPluginAdapter extends PluginAdapter{
     public MyPluginAdapter() {
@@ -38,5 +40,15 @@ public class MyPluginAdapter extends PluginAdapter{
     public boolean clientInsertSelectiveMethodGenerated(Method method, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         return false;
     }
+    //TODO，生成额外的java类，可以考虑生成service,以及controller
+    @Override
+    public List<GeneratedJavaFile> contextGenerateAdditionalJavaFiles() {
+        List<GeneratedJavaFile> generatedJavaFiles = new ArrayList<GeneratedJavaFile>();
+//        GeneratedJavaFile generatedJavaFile = new GeneratedJavaFile();
+//        generatedJavaFiles.add(generatedJavaFile);
+        return generatedJavaFiles;
+    }
+
+    //    添加分页方法
 
 }
