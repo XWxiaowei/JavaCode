@@ -10,7 +10,7 @@
             <!--<property name="suppressAllComments" value="true"/> &lt;!&ndash; 是否取消注释 &ndash;&gt;-->
         </commentGenerator>
         <!--数据库链接地址账号密码-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/platformkf" userId="root" password="1234">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/ssh_employee" userId="root" password="1234">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
