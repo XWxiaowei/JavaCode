@@ -26,7 +26,8 @@ public class GeneratorStartUp {
             System.out.println(System.getProperty("user.dir"));
             // 1、生成XML, Map, Model
             //直接获取generatorConfig.xml的文件路径 根据具体情况查看
-            File configFile = new File(System.getProperty("user.dir")+"\\auto-java-code-upgrade\\src\\main\\resources\\generatorConfig.xml");
+//            File configFile = new File(System.getProperty("user.dir")+"\\auto-java-code-upgrade\\src\\main\\resources\\generatorConfig.xml");
+            File configFile = new File(System.getProperty("user.dir")+"/auto-java-code-upgrade/src/main/resources/generatorConfig.xml");
             ConfigurationParser cp = new ConfigurationParser(warnings);
             Configuration config = cp.parseConfiguration(configFile);
             DefaultShellCallback callback = new DefaultShellCallback(overwrite);
