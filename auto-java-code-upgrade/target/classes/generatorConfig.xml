@@ -6,14 +6,14 @@
     路径2  \Volumes\Develop\JavaTempCode\auto-java-code-upgrade\src\main\resources\lib\mysql-connector-java-5.1.13.jar-->
     <properties resource="generatorConfig.properties"></properties>
     <classPathEntry    location="${projectPath}/auto-java-code-upgrade/src/main/resources/lib/mysql-connector-java-5.1.13.jar"/>
-    <context id="DB2Tables"   targetRuntime="MyBatis3">
-    <!--<context id="DB2Tables"   targetRuntime="com.jay.generatorator.MyIntrospectedTableMyBatis3SimpleImpl">-->
+    <!--<context id="DB2Tables"   targetRuntime="MyBatis3">-->
+    <context id="DB2Tables"  targetRuntime="com.jay.generator.codegen.mybatis3.MyIntrospectedTableMyBatis3SimpleImpl">
     <!--自定义设置-->
-        <plugin type="com.jay.generator.MyPluginAdapter">
+        <plugin type="com.jay.generator.api.MyPluginAdapter">
 
         </plugin>
         <!--文档注释-->
-        <commentGenerator type="com.jay.generator.MyCommentGenerator">
+        <commentGenerator type="com.jay.generator.internal.MyCommentGenerator">
             <property name="javaFileEncoding" value="UTF-8"/>
             <!--<property name="suppressDate" value="false"/> &lt;!&ndash; 是否生成注释代时间戳 &ndash;&gt;-->
             <!--<property name="suppressAllComments" value="true"/> &lt;!&ndash; 是否取消注释 &ndash;&gt;-->

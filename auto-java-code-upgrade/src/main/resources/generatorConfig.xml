@@ -6,8 +6,8 @@
     路径2  \Volumes\Develop\JavaTempCode\auto-java-code-upgrade\src\main\resources\lib\mysql-connector-java-5.1.13.jar-->
     <properties resource="generatorConfig.properties"></properties>
     <classPathEntry    location="${projectPath}/auto-java-code-upgrade/src/main/resources/lib/mysql-connector-java-5.1.13.jar"/>
-    <context id="DB2Tables"   targetRuntime="MyBatis3">
-    <!--<context id="DB2Tables"   targetRuntime="com.jay.generatorator.MyIntrospectedTableMyBatis3SimpleImpl">-->
+    <!--<context id="DB2Tables"   targetRuntime="MyBatis3">-->
+    <context id="DB2Tables"  targetRuntime="com.jay.generator.codegen.mybatis3.MyIntrospectedTableMyBatis3SimpleImpl">
     <!--自定义设置-->
         <plugin type="com.jay.generator.api.MyPluginAdapter">
 
