@@ -26,30 +26,31 @@ public class MyIntrospectedTableMyBatis3SimpleImpl extends IntrospectedTableMyBa
         } else {
             this.xmlMapperGenerator = javaClientGenerator.getMatchedXMLGenerator();
         }
+        this.initializeAbstractGenerator(this.xmlMapperGenerator, warnings, progressCallback);
     }
-//
-//    @Override
-//    protected AbstractJavaClientGenerator createJavaClientGenerator() {
-//        if (this.context.getJavaClientGeneratorConfiguration() == null) {
-//            return null;
-//        } else {
-//            String type = this.context.getJavaClientGeneratorConfiguration().getConfigurationType();
-//            Object javaGenerator;
-//            if ("XMLMAPPER".equalsIgnoreCase(type)) {
-//                javaGenerator = new MySimpleJavaClientGenerator();
-//            } else if ("ANNOTATEDMAPPER".equalsIgnoreCase(type)) {
-//                javaGenerator = new MySimpleAnnotatedClientGenerator();
-//            } else if ("MAPPER".equalsIgnoreCase(type)) {
-//                javaGenerator = new MySimpleJavaClientGenerator();
-//            } else {
-//                javaGenerator = (AbstractJavaClientGenerator) ObjectFactory.createInternalObject(type);
-//            }
-//            return (AbstractJavaClientGenerator)javaGenerator;
-//        }
-//    }
-//
-//    @Override
-//    protected void calculateJavaModelGenerators(List<String> warnings, ProgressCallback progressCallback) {
-//        super.calculateJavaModelGenerators(warnings, progressCallback);
-//    }
+
+    @Override
+    protected AbstractJavaClientGenerator createJavaClientGenerator() {
+        if (this.context.getJavaClientGeneratorConfiguration() == null) {
+            return null;
+        } else {
+            String type = this.context.getJavaClientGeneratorConfiguration().getConfigurationType();
+            Object javaGenerator;
+            if ("XMLMAPPER".equalsIgnoreCase(type)) {
+                javaGenerator = new MySimpleJavaClientGenerator();
+            } else if ("ANNOTATEDMAPPER".equalsIgnoreCase(type)) {
+                javaGenerator = new MySimpleAnnotatedClientGenerator();
+            } else if ("MAPPER".equalsIgnoreCase(type)) {
+                javaGenerator = new MySimpleJavaClientGenerator();
+            } else {
+                javaGenerator = (AbstractJavaClientGenerator) ObjectFactory.createInternalObject(type);
+            }
+            return (AbstractJavaClientGenerator)javaGenerator;
+        }
+    }
+
+    @Override
+    protected void calculateJavaModelGenerators(List<String> warnings, ProgressCallback progressCallback) {
+        super.calculateJavaModelGenerators(warnings, progressCallback);
+    }
 }
