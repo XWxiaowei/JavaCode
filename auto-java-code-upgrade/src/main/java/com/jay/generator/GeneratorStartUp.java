@@ -1,6 +1,8 @@
 package com.jay.generator;
 
 import com.alibaba.fastjson.JSON;
+import com.jay.generator.api.AutoGenerationJavaCodeUpgrade;
+import freemarker.template.TemplateException;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.Context;
@@ -46,7 +48,8 @@ public class GeneratorStartUp {
                         //获取实体类类名
                         String domainObjectName=tableConfiguration.getDomainObjectName();
                         //生成service
-
+                        AutoGenerationJavaCodeUpgrade autoGenerationJavaCodeUpgrade = new AutoGenerationJavaCodeUpgrade();
+                        autoGenerationJavaCodeUpgrade.autoGenerationJavaCode(domainObjectName,System.getProperty("user.dir") + "/auto-java-code-upgrade/src/main/com/jay/generator");
                         //生成controller
                     }
                 }
@@ -60,6 +63,10 @@ public class GeneratorStartUp {
         } catch (InvalidConfigurationException e) {
             e.printStackTrace();
         } catch (XMLParserException e) {
+            e.printStackTrace();
+        } catch (TemplateException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
