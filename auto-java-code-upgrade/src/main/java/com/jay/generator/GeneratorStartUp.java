@@ -1,6 +1,5 @@
 package com.jay.generator;
 
-import com.alibaba.fastjson.JSON;
 import com.jay.generator.api.AutoGenerationJavaCodeUpgrade;
 import freemarker.template.TemplateException;
 import org.mybatis.generator.api.MyBatisGenerator;
@@ -24,6 +23,11 @@ import java.util.List;
  * @create 2017/12/7 15:45
  */
 public class GeneratorStartUp {
+    /**
+     * @param args
+     * @throws URISyntaxException
+     *
+     */
     public static void main(String[] args) throws URISyntaxException {
         try {
             List<String> warnings = new ArrayList<String>();
@@ -49,7 +53,7 @@ public class GeneratorStartUp {
                         String domainObjectName=tableConfiguration.getDomainObjectName();
                         //生成service
                         AutoGenerationJavaCodeUpgrade autoGenerationJavaCodeUpgrade = new AutoGenerationJavaCodeUpgrade();
-                        autoGenerationJavaCodeUpgrade.autoGenerationJavaCode(domainObjectName,System.getProperty("user.dir") + "/auto-java-code-upgrade/src/main/com/jay/generator");
+                        autoGenerationJavaCodeUpgrade.autoGenerationJavaCode(domainObjectName,System.getProperty("user.dir") + "/auto-java-code-upgrade/src/main/java/com/jay/generator/service");
                         //生成controller
                     }
                 }
