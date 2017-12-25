@@ -47,6 +47,10 @@
              enableInsert="true" enableDeleteByPrimaryKey="false" enableUpdateByPrimaryKey="true"
              enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
              enableSelectByExample="false" selectByExampleQueryId="false" selectByPrimaryKeyQueryId="false"></table>
+        <table tableName="sh_employee" domainObjectName="ShEmployee"
+               enableInsert="true" enableDeleteByPrimaryKey="false" enableUpdateByPrimaryKey="true"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" selectByPrimaryKeyQueryId="false"></table>
 
-  </context>
+    </context>
 </generatorConfiguration>

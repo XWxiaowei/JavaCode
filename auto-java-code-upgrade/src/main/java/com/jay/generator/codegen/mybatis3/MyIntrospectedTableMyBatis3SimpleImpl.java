@@ -48,21 +48,4 @@ public class MyIntrospectedTableMyBatis3SimpleImpl extends IntrospectedTableMyBa
     protected void calculateJavaModelGenerators(List<String> warnings, ProgressCallback progressCallback) {
         super.calculateJavaModelGenerators(warnings, progressCallback);
     }
-//    public String getQueryPageList() {
-//        return (String)this.internalAttributes.get(InternalAttribute.ATTR_QUERY_PAGE_LIST);
-//    }
-//    public void setQueryPageList(String s) {
-//        this.internalAttributes.put(MyIntrospectedTableMyBatis3SimpleImpl.InternalAttribute.ATTR_QUERY_PAGE_LIST, s);
-//    }
-
-//    @Override
-//    protected void calculateXmlAttributes() {
-//        super.calculateXmlAttributes();
-//        this.setQueryPageList("queryPageList");
-//    }
-//    protected static enum  InternalAttribute{
-//        ATTR_QUERY_PAGE_LIST;
-//        private InternalAttribute() {
-//        }
-//    }
 }

@@ -84,7 +84,7 @@ public class MySimpleJavaClientGenerator extends SimpleJavaClientGenerator {
      * @param interfaze
      */
     protected void addQueryPageListMethod(Interface interfaze) {
-        //TODO 后期添加rules
+        //后期添加rules
         AbstractJavaMapperMethodGenerator methodGenerator = new QueryPageListMethodGenerator();
         this.initializeAndExecuteGenerator(methodGenerator, interfaze);
     }
