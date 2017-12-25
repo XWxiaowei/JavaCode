@@ -17,6 +17,8 @@ public class QueryPageListMethodGenerator extends AbstractJavaMapperMethodGenera
         Method method = new Method();
         method.setVisibility(JavaVisibility.PUBLIC);
         FullyQualifiedJavaType returnType = FullyQualifiedJavaType.getNewListInstance();
+        FullyQualifiedJavaType listType = new FullyQualifiedJavaType(this.introspectedTable.getBaseRecordType());
+        returnType.addTypeArgument(listType);
         method.setReturnType(returnType);
         method.setName("queryPageList");
         // 添加额外参数
