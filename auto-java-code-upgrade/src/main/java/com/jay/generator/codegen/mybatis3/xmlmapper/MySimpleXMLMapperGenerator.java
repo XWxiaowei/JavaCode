@@ -1,13 +1,61 @@
 package com.jay.generator.codegen.mybatis3.xmlmapper;
 
+import com.jay.generator.codegen.mybatis3.xmlmapper.elements.MySimpleQueryPageListElementGenerator;
+import org.mybatis.generator.api.FullyQualifiedTable;
+import org.mybatis.generator.api.dom.xml.Attribute;
+import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.SimpleXMLMapperGenerator;
+import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.AbstractXmlElementGenerator;
+import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.CountByExampleElementGenerator;
+import org.mybatis.generator.internal.util.messages.Messages;
 
 /**
- * TODO 自定义生成XML
- * Created by xiang.wei on 2017/12/23
+ * XML生成类
+ * Created by  on 2017/12/23
+ * @author  xiang.wei
  */
 public class MySimpleXMLMapperGenerator extends SimpleXMLMapperGenerator{
-//    public MySimpleXMLMapperGenerator() {
-////        super();
+    public MySimpleXMLMapperGenerator() {
+    }
+
+    @Override
+    protected XmlElement getSqlMapElement() {
+        FullyQualifiedTable table = this.introspectedTable.getFullyQualifiedTable();
+        this.progressCallback.startTask(Messages.getString("Progress.12", table.toString()));
+        XmlElement answer = new XmlElement("mapper");
+        String namespace = this.introspectedTable.getMyBatis3SqlMapNamespace();
+        answer.addAttribute(new Attribute("namespace", namespace));
+        this.context.getCommentGenerator().addRootComment(answer);
+        this.addResultMapElement(answer);
+        this.addDeleteByPrimaryKeyElement(answer);
+        this.addInsertElement(answer);
+        this.addUpdateByPrimaryKeyElement(answer);
+        this.addSelectByPrimaryKeyElement(answer);
+        this.addSelectAllElement(answer);
+        this.addQueryPageList(answer);
+//        this.addCountByExampleElement(answer);
+        return answer;
+
+    }
+
+    /**
+     * 分页语句
+     * @param parentElement
+     */
+    protected void addQueryPageList(XmlElement parentElement) {
+        AbstractXmlElementGenerator elementGenerator = new MySimpleQueryPageListElementGenerator();
+        this.initializeAndExecuteGenerator(elementGenerator, parentElement);
+    }
+
+    /**
+     * 统计数量语句
+     * @param parentElement
+     */
+//    protected void addCountByExampleElement(XmlElement parentElement) {
+//        if (this.introspectedTable.getRules().generateCountByExample()) {
+//            AbstractXmlElementGenerator elementGenerator = new CountByExampleElementGenerator();
+//            this.initializeAndExecuteGenerator(elementGenerator, parentElement);
+//        }
+//
 //    }
 }

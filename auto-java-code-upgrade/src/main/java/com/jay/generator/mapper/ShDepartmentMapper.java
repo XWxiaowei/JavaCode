@@ -30,4 +30,12 @@ public interface ShDepartmentMapper {
      * @return int
      */
     int updateByPrimaryKey(ShDepartment record);
+
+    /**
+     * queryPageList
+     * @param current
+     * @param pageSize
+     * @return java.util.List
+     */
+    List queryPageList(Integer current, Integer pageSize);
 }

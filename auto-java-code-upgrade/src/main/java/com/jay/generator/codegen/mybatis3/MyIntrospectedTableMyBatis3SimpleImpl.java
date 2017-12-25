@@ -3,6 +3,7 @@ package com.jay.generator.codegen.mybatis3;
 import com.jay.generator.codegen.mybatis3.javamapper.MySimpleAnnotatedClientGenerator;
 import com.jay.generator.codegen.mybatis3.javamapper.MySimpleJavaClientGenerator;
 import com.jay.generator.codegen.mybatis3.xmlmapper.MySimpleXMLMapperGenerator;
+import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.ProgressCallback;
 import org.mybatis.generator.codegen.AbstractJavaClientGenerator;
 import org.mybatis.generator.codegen.mybatis3.IntrospectedTableMyBatis3SimpleImpl;
@@ -19,13 +20,7 @@ public class MyIntrospectedTableMyBatis3SimpleImpl extends IntrospectedTableMyBa
 
     @Override
     protected void calculateXmlMapperGenerator(AbstractJavaClientGenerator javaClientGenerator, List<String> warnings, ProgressCallback progressCallback) {
-        if (javaClientGenerator == null) {
-            if (this.context.getSqlMapGeneratorConfiguration() != null) {
-                this.xmlMapperGenerator = new MySimpleXMLMapperGenerator();
-            }
-        } else {
-            this.xmlMapperGenerator = javaClientGenerator.getMatchedXMLGenerator();
-        }
+        this.xmlMapperGenerator = new MySimpleXMLMapperGenerator();
         this.initializeAbstractGenerator(this.xmlMapperGenerator, warnings, progressCallback);
     }
 
@@ -53,4 +48,21 @@ public class MyIntrospectedTableMyBatis3SimpleImpl extends IntrospectedTableMyBa
     protected void calculateJavaModelGenerators(List<String> warnings, ProgressCallback progressCallback) {
         super.calculateJavaModelGenerators(warnings, progressCallback);
     }
+//    public String getQueryPageList() {
+//        return (String)this.internalAttributes.get(InternalAttribute.ATTR_QUERY_PAGE_LIST);
+//    }
+//    public void setQueryPageList(String s) {
+//        this.internalAttributes.put(MyIntrospectedTableMyBatis3SimpleImpl.InternalAttribute.ATTR_QUERY_PAGE_LIST, s);
+//    }
+
+//    @Override
+//    protected void calculateXmlAttributes() {
+//        super.calculateXmlAttributes();
+//        this.setQueryPageList("queryPageList");
+//    }
+//    protected static enum  InternalAttribute{
+//        ATTR_QUERY_PAGE_LIST;
+//        private InternalAttribute() {
+//        }
+//    }
 }
