@@ -1,5 +1,6 @@
 package com.jay.generator.codegen.mybatis3.javamapper;
 
+import com.jay.generator.codegen.mybatis3.javamapper.elements.CountListMethodGenerator;
 import com.jay.generator.codegen.mybatis3.javamapper.elements.QueryPageListMethodGenerator;
 import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.dom.java.CompilationUnit;
@@ -16,10 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO 自定义生成mapper
+ * 自定义生成mapper
  * Created by xiang.wei on 2017/12/23
  */
-public class MySimpleJavaClientGenerator extends SimpleJavaClientGenerator{
+public class MySimpleJavaClientGenerator extends SimpleJavaClientGenerator {
     public MySimpleJavaClientGenerator() {
         super(true);
     }
@@ -51,10 +52,10 @@ public class MySimpleJavaClientGenerator extends SimpleJavaClientGenerator{
         this.addSelectByPrimaryKeyMethod(interfaze);
         this.addSelectAllMethod(interfaze);
         this.addUpdateByPrimaryKeyMethod(interfaze);
+        this.addCountListMethod(interfaze);
         this.addQueryPageListMethod(interfaze);
-//        this.addCountByExampleMethod(interfaze);
         List<CompilationUnit> answer = new ArrayList<CompilationUnit>();
-        if (this.context.getPlugins().clientGenerated(interfaze, (TopLevelClass)null, this.introspectedTable)) {
+        if (this.context.getPlugins().clientGenerated(interfaze, (TopLevelClass) null, this.introspectedTable)) {
             answer.add(interfaze);
         }
 
@@ -65,14 +66,24 @@ public class MySimpleJavaClientGenerator extends SimpleJavaClientGenerator{
 
         return answer;
     }
-//    protected void addCountByExampleMethod(Interface interfaze) {
-//        if (this.introspectedTable.getRules().generateCountByExample()) {
-//            AbstractJavaMapperMethodGenerator methodGenerator = new CountByExampleMethodGenerator();
-//            this.initializeAndExecuteGenerator(methodGenerator, interfaze);
-//        }
-//
-//    }
-    protected void  addQueryPageListMethod(Interface interfaze) {
+
+    /**
+     * 生成统计数量的方法
+     *
+     * @param interfaze
+     */
+    protected void addCountListMethod(Interface interfaze) {
+        AbstractJavaMapperMethodGenerator methodGenerator = new CountListMethodGenerator();
+        this.initializeAndExecuteGenerator(methodGenerator, interfaze);
+
+    }
+
+    /**
+     * 生成分页方法
+     *
+     * @param interfaze
+     */
+    protected void addQueryPageListMethod(Interface interfaze) {
         //TODO 后期添加rules
         AbstractJavaMapperMethodGenerator methodGenerator = new QueryPageListMethodGenerator();
         this.initializeAndExecuteGenerator(methodGenerator, interfaze);

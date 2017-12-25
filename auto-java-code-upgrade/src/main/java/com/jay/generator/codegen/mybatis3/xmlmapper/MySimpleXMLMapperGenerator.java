@@ -1,20 +1,21 @@
 package com.jay.generator.codegen.mybatis3.xmlmapper;
 
+import com.jay.generator.codegen.mybatis3.xmlmapper.elements.MySimpleCountListElementGenerator;
 import com.jay.generator.codegen.mybatis3.xmlmapper.elements.MySimpleQueryPageListElementGenerator;
 import org.mybatis.generator.api.FullyQualifiedTable;
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.SimpleXMLMapperGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.AbstractXmlElementGenerator;
-import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.CountByExampleElementGenerator;
 import org.mybatis.generator.internal.util.messages.Messages;
 
 /**
  * XML生成类
  * Created by  on 2017/12/23
- * @author  xiang.wei
+ *
+ * @author xiang.wei
  */
-public class MySimpleXMLMapperGenerator extends SimpleXMLMapperGenerator{
+public class MySimpleXMLMapperGenerator extends SimpleXMLMapperGenerator {
     public MySimpleXMLMapperGenerator() {
     }
 
@@ -32,30 +33,29 @@ public class MySimpleXMLMapperGenerator extends SimpleXMLMapperGenerator{
         this.addUpdateByPrimaryKeyElement(answer);
         this.addSelectByPrimaryKeyElement(answer);
         this.addSelectAllElement(answer);
-        this.addQueryPageList(answer);
-//        this.addCountByExampleElement(answer);
+        this.addCountListElement(answer);
+        this.addQueryPageListElement(answer);
         return answer;
 
     }
 
     /**
      * 分页语句
+     *
      * @param parentElement
      */
-    protected void addQueryPageList(XmlElement parentElement) {
+    protected void addQueryPageListElement(XmlElement parentElement) {
         AbstractXmlElementGenerator elementGenerator = new MySimpleQueryPageListElementGenerator();
         this.initializeAndExecuteGenerator(elementGenerator, parentElement);
     }
 
     /**
      * 统计数量语句
+     *
      * @param parentElement
      */
-//    protected void addCountByExampleElement(XmlElement parentElement) {
-//        if (this.introspectedTable.getRules().generateCountByExample()) {
-//            AbstractXmlElementGenerator elementGenerator = new CountByExampleElementGenerator();
-//            this.initializeAndExecuteGenerator(elementGenerator, parentElement);
-//        }
-//
-//    }
+    protected void addCountListElement(XmlElement parentElement) {
+        AbstractXmlElementGenerator elementGenerator = new MySimpleCountListElementGenerator();
+        this.initializeAndExecuteGenerator(elementGenerator, parentElement);
+    }
 }
