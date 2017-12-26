@@ -1,5 +1,8 @@
+package ${packageName};
 import java.util.List;
 import java.util.Map;
+import ${modelPackageName}.${className?cap_first};
+import com.jay.generator.pagehelper.PageInfo;
 
 /**
 *
@@ -9,24 +12,24 @@ import java.util.Map;
 public interface ${className?cap_first}Service {
 	/**
 	* 分页查询
-	* @param ${className}
+	* @param pageInfo
 	* @return
 	*/
-	List<${className?cap_first}> queryPageList(${className?cap_first} ${className});
+	List<${className?cap_first}> queryPageList(PageInfo<${className?cap_first}> pageInfo);
 
 	/**
 	* 新增数据
 	* @param ${className}
 	* @return
 	*/
-	int  save${className}(${className?cap_first} ${className});
+	int  save${className?cap_first}(${className?cap_first} ${className});
 
 	/**
 	* 修改数据
 	* @param ${className}
 	* @return
 	*/
-	int  modify${className}(${className?cap_first} ${className});
+	int  modify${className?cap_first}(${className?cap_first} ${className});
 	
 
 

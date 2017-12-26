@@ -12,13 +12,11 @@ import org.mybatis.generator.exception.XMLParserException;
 import org.mybatis.generator.internal.DefaultShellCallback;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * @author generator.wei
@@ -33,12 +31,11 @@ public class GeneratorStartUp {
      */
     public static void main(String[] args) throws URISyntaxException {
         try {
-            //读取属性文件
-            FileInputStream inStream  = new FileInputStream(new File(System.getProperty("user.dir") + "/auto-java-code-upgrade/src/main/resources/generatorConfig.properties"));
-            Properties prop = new Properties();
-            prop.load(inStream);
-            String servicePackage = prop.getProperty("servicePath");
-
+            AutoGenerationJavaCodeUpgrade autoGenerationJavaCodeUpgrade = new AutoGenerationJavaCodeUpgrade();
+            //获取service，controller包名
+            String servicePackageName = autoGenerationJavaCodeUpgrade.getServicePackageName();
+            //得到包路径
+            String servicePackagePath = servicePackageName.replace(".","/");
             List<String> warnings = new ArrayList<String>();
             boolean overwrite = true;
             // 1、生成XML, Map, Model
@@ -60,9 +57,11 @@ public class GeneratorStartUp {
                     for (TableConfiguration tableConfiguration : tableConfigurations) {
                         //获取实体类类名
                         String domainObjectName=tableConfiguration.getDomainObjectName();
+                        String first = domainObjectName.substring(0, 1).toLowerCase();
+                        String rest = domainObjectName.substring(1);
+                        domainObjectName = first + rest;
                         //生成service
-                        AutoGenerationJavaCodeUpgrade autoGenerationJavaCodeUpgrade = new AutoGenerationJavaCodeUpgrade();
-                        autoGenerationJavaCodeUpgrade.autoGenerationJavaCode(domainObjectName,System.getProperty("user.dir") + "/auto-java-code-upgrade/src/main/java/"+servicePackage);
+                        autoGenerationJavaCodeUpgrade.autoGenerationJavaCode(domainObjectName,System.getProperty("user.dir") + "/auto-java-code-upgrade/src/main/java/"+servicePackagePath);
                         //生成controller
                     }
                 }
