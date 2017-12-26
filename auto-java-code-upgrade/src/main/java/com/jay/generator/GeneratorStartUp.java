@@ -12,17 +12,20 @@ import org.mybatis.generator.exception.XMLParserException;
 import org.mybatis.generator.internal.DefaultShellCallback;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * @author generator.wei
  * @create 2017/12/7 15:45
  */
 public class GeneratorStartUp {
+
     /**
      * @param args
      * @throws URISyntaxException
@@ -30,6 +33,12 @@ public class GeneratorStartUp {
      */
     public static void main(String[] args) throws URISyntaxException {
         try {
+            //读取属性文件
+            FileInputStream inStream  = new FileInputStream(new File(System.getProperty("user.dir") + "/auto-java-code-upgrade/src/main/resources/generatorConfig.properties"));
+            Properties prop = new Properties();
+            prop.load(inStream);
+            String servicePackage = prop.getProperty("servicePath");
+
             List<String> warnings = new ArrayList<String>();
             boolean overwrite = true;
             // 1、生成XML, Map, Model
@@ -53,7 +62,7 @@ public class GeneratorStartUp {
                         String domainObjectName=tableConfiguration.getDomainObjectName();
                         //生成service
                         AutoGenerationJavaCodeUpgrade autoGenerationJavaCodeUpgrade = new AutoGenerationJavaCodeUpgrade();
-                        autoGenerationJavaCodeUpgrade.autoGenerationJavaCode(domainObjectName,System.getProperty("user.dir") + "/auto-java-code-upgrade/src/main/java/com/jay/generator/service");
+                        autoGenerationJavaCodeUpgrade.autoGenerationJavaCode(domainObjectName,System.getProperty("user.dir") + "/auto-java-code-upgrade/src/main/java/"+servicePackage);
                         //生成controller
                     }
                 }
