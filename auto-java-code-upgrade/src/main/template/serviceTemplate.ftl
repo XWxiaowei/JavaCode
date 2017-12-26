@@ -15,7 +15,7 @@ public interface ${className?cap_first}Service {
 	* @param pageInfo
 	* @return
 	*/
-	List<${className?cap_first}> queryPageList(PageInfo<${className?cap_first}> pageInfo);
+    PageInfo<${className?cap_first}> queryPageList(PageInfo<${className?cap_first}> pageInfo);
 
 	/**
 	* 新增数据

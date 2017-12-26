@@ -39,8 +39,8 @@ public class ${className?cap_first}Controller {
 				if (pageSize != null && pageSize > 0) {
 				pageInfo.setPageSize(pageSize);
 				}
-          List<${className?cap_first}> list = ${className}Service.queryPageList(pageInfo);
-		  return "";
+			pageInfo = ${className}Service.queryPageList(pageInfo);
+		    return "";
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class ${className?cap_first}Controller {
 	*/
 	@RequestMapping(value="/add",method= RequestMethod.POST)
     @ResponseBody
-	public int  save${className}(${className?cap_first} ${className}){
+	public int  save${className?cap_first}(${className?cap_first} ${className}){
 		  int result = ${className}Service.save${className?cap_first}(${className});
 		  return result;
 	}
@@ -62,7 +62,7 @@ public class ${className?cap_first}Controller {
 	*/
 	@RequestMapping("/mod")
 	@ResponseBody
-	public int modify${className}(${className?cap_first} ${className}){
+	public int modify${className?cap_first}(${className?cap_first} ${className}){
 		  int result = ${className}Service.modify${className?cap_first}(${className});
 		  return result;
 	}
