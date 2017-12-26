@@ -10,5 +10,7 @@
 2. jdbcConnection 连接的相关配置
 ### generatorConfig.xml文件中
 1. 生成对应表及类名 这个配置需要修改，你需要对哪些表生产代码就添加哪些表
+## 运行
+直接运行GeneratorStartUp类即可
 ### 参考文档：
 http://www.mybatis.org/generator/index.html
