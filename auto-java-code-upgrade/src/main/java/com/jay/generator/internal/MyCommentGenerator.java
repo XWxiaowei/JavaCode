@@ -21,6 +21,7 @@ import java.util.Properties;
 import static org.mybatis.generator.internal.util.StringUtility.isTrue;
 
 /**
+ * 扩展文档注释
  * @author generator.wei
  * @create 2017/12/7 15:24
  */

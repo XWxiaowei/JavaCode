@@ -15,7 +15,7 @@ import com.jay.generator.pagehelper.PageInfo;
 public class ${className?cap_first}ServiceImpl implements ${className?cap_first}Service{
 	
 	@Autowired
-	${className?cap_first}Mapper ${className}Mapper;
+  private ${className?cap_first}Mapper ${className}Mapper;
  @Override
  public PageInfo<${className?cap_first}>  queryPageList(PageInfo<${className?cap_first}> pageInfo){
      try {

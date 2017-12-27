@@ -17,10 +17,11 @@ import com.jay.generator.pagehelper.PageInfo;
 *
 */
 @Controller
+@RequestMapping("/${className}")
 public class ${className?cap_first}Controller {
 	
 	@Autowired
-	${className?cap_first}Service ${className}Service;
+	private ${className?cap_first}Service ${className}Service;
 
 	/**
 	* 分页查询
