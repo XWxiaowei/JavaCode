@@ -1,6 +1,4 @@
 package ${packageName};
-import java.util.List;
-import java.util.Map;
 import ${modelPackageName}.${className?cap_first};
 import com.jay.generator.pagehelper.PageInfo;
 
