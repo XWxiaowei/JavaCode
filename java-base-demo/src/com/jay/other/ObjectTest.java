@@ -1,3 +1,5 @@
+package com.jay.other;
+
 import java.util.Objects;
 
 /**

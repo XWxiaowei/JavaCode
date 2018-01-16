@@ -1,3 +1,5 @@
+package com.jay.other;
+
 /**
  * Created by xiang.wei on 2017/9/17
  */

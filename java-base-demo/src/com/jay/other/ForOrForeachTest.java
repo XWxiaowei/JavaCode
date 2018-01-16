@@ -1,4 +1,4 @@
-package com.jay.otherThread;
+package com.jay.other;
 
 import java.util.ArrayList;
 
