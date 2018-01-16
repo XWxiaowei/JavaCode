@@ -23,6 +23,7 @@ import java.util.List;
  * @create 2017/12/7 15:45
  */
 public class GeneratorStartUp {
+
     /**
      * @param args
      * @throws URISyntaxException
@@ -30,6 +31,11 @@ public class GeneratorStartUp {
      */
     public static void main(String[] args) throws URISyntaxException {
         try {
+            AutoGenerationJavaCodeUpgrade autoGenerationJavaCodeUpgrade = new AutoGenerationJavaCodeUpgrade();
+            //获取service，controller包名
+            String servicePackageName = autoGenerationJavaCodeUpgrade.getServicePackageName();
+            //得到包路径
+            String servicePackagePath = servicePackageName.replace(".","/");
             List<String> warnings = new ArrayList<String>();
             boolean overwrite = true;
             // 1、生成XML, Map, Model
@@ -51,9 +57,11 @@ public class GeneratorStartUp {
                     for (TableConfiguration tableConfiguration : tableConfigurations) {
                         //获取实体类类名
                         String domainObjectName=tableConfiguration.getDomainObjectName();
+                        String first = domainObjectName.substring(0, 1).toLowerCase();
+                        String rest = domainObjectName.substring(1);
+                        domainObjectName = first + rest;
                         //生成service
-                        AutoGenerationJavaCodeUpgrade autoGenerationJavaCodeUpgrade = new AutoGenerationJavaCodeUpgrade();
-                        autoGenerationJavaCodeUpgrade.autoGenerationJavaCode(domainObjectName,System.getProperty("user.dir") + "/auto-java-code-upgrade/src/main/java/com/jay/generator/service");
+                        autoGenerationJavaCodeUpgrade.autoGenerationJavaCode(domainObjectName,System.getProperty("user.dir") + "/auto-java-code-upgrade/src/main/java/"+servicePackagePath);
                         //生成controller
                     }
                 }

@@ -10,6 +10,7 @@ import java.util.List;
  * @author xiang.wei
  * @create 2017/12/25 16:37
  */
+@Deprecated
 public class ControllerGenerator extends AbstractJavaGenerator {
     @Override
     public List<CompilationUnit> getCompilationUnits() {

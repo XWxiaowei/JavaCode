@@ -18,12 +18,22 @@ public class MyIntrospectedTableMyBatis3SimpleImpl extends IntrospectedTableMyBa
     public MyIntrospectedTableMyBatis3SimpleImpl() {
     }
 
+    /**
+     * XML的生成方法
+     * @param javaClientGenerator
+     * @param warnings
+     * @param progressCallback
+     */
     @Override
     protected void calculateXmlMapperGenerator(AbstractJavaClientGenerator javaClientGenerator, List<String> warnings, ProgressCallback progressCallback) {
         this.xmlMapperGenerator = new MySimpleXMLMapperGenerator();
         this.initializeAbstractGenerator(this.xmlMapperGenerator, warnings, progressCallback);
     }
 
+    /**
+     * Mapper类的生成方法
+     * @return
+     */
     @Override
     protected AbstractJavaClientGenerator createJavaClientGenerator() {
         if (this.context.getJavaClientGeneratorConfiguration() == null) {
@@ -44,6 +54,11 @@ public class MyIntrospectedTableMyBatis3SimpleImpl extends IntrospectedTableMyBa
         }
     }
 
+    /**
+     * model类的生成方法
+     * @param warnings
+     * @param progressCallback
+     */
     @Override
     protected void calculateJavaModelGenerators(List<String> warnings, ProgressCallback progressCallback) {
         super.calculateJavaModelGenerators(warnings, progressCallback);

@@ -1,10 +1,12 @@
-import java.util.List;
-import java.util.Map;
+package ${packageName};
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import ${modelPackageName}.${className?cap_first};
+import com.jay.generator.pagehelper.PageInfo;
 
 /**
 *
@@ -12,21 +14,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
 *
 */
 @Controller
+@RequestMapping("/${className}")
 public class ${className?cap_first}Controller {
 	
 	@Autowired
-	${className?cap_first}Service ${className}Service;
+	private ${className?cap_first}Service ${className}Service;
 
 	/**
 	* 分页查询
-	* @param ${className}
+	* @param model
+	* @param pageNum
+	* @param pageSize
 	* @return
 	*/
 	@RequestMapping("/query")
 	@ResponseBody
-	public List<${className?cap_first}> queryPageList(${className?cap_first} ${className}){
-          List<${className?cap_first}> list = ${className}Service.queryPageList(${className});
-		  return list;	  
+	public String queryPageList(Model model, Integer pageNum, Integer pageSize){
+			PageInfo<${className?cap_first}> pageInfo =new PageInfo<${className?cap_first}>();
+				if (pageNum != null && pageNum > 0) {
+				pageInfo.setPageNum(pageNum);
+				}
+				if (pageSize != null && pageSize > 0) {
+				pageInfo.setPageSize(pageSize);
+				}
+			pageInfo = ${className}Service.queryPageList(pageInfo);
+		    return "";
 	}
 
 	/**
@@ -36,8 +48,8 @@ public class ${className?cap_first}Controller {
 	*/
 	@RequestMapping(value="/add",method= RequestMethod.POST)
     @ResponseBody
-	public int  save${className}(${className?cap_first} ${className}){
-		  int result = ${className}Service.${className}Save(${className});
+	public int  save${className?cap_first}(${className?cap_first} ${className}){
+		  int result = ${className}Service.save${className?cap_first}(${className});
 		  return result;
 	}
 
@@ -48,8 +60,8 @@ public class ${className?cap_first}Controller {
 	*/
 	@RequestMapping("/mod")
 	@ResponseBody
-	public int modify${className}(${className?cap_first} ${className}){
-		  int result = ${className}Service.${className}Modify(${className});
+	public int modify${className?cap_first}(${className?cap_first} ${className}){
+		  int result = ${className}Service.modify${className?cap_first}(${className});
 		  return result;
 	}
 }
