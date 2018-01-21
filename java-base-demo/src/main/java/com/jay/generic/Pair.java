@@ -5,7 +5,7 @@ package com.jay.generic;
  * Created by xiang.wei on 2018/1/17
  * @author xiang.wei
  */
-public class Pair <T>{
+public class Pair<T>{
     private T first;
     private T second;
 

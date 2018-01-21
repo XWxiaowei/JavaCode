@@ -6,27 +6,36 @@ package com.jay.generic.employee;
  * @author xiang.wei
  */
 public class Employee {
-    private String first;
-    private String second;
+    private String name;
+    private int salary;
+    private int bonus;
 
-    public Employee(String first, String second) {
-        this.first = first;
-        this.second = second;
+    public Employee(String name, int salary) {
+        this.name = name;
+        this.bonus = salary;
     }
 
-    public String getFirst() {
-        return first;
+    public String getName() {
+        return name;
     }
 
-    public void setFirst(String first) {
-        this.first = first;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSecond() {
-        return second;
+    public int getBonus() {
+        return bonus;
     }
 
-    public void setSecond(String second) {
-        this.second = second;
+    public void setBonus(int bonus) {
+        this.bonus = bonus;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 }

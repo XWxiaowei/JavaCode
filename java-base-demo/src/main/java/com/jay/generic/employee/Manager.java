@@ -6,7 +6,7 @@ package com.jay.generic.employee;
  * @author xiang.wei
  */
 public class Manager extends Employee {
-    public Manager(String first, String second) {
+    public Manager(String first, int second) {
         super(first, second);
     }
 }

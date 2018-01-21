@@ -9,15 +9,15 @@ import com.jay.generic.Pair;
  */
 public class EmployeeTest {
     public static void main(String[] args) {
-        Manager manager = new Manager("zhang", "cheng");
-        Manager manager1 = new Manager("Li", "Si");
+        Manager manager = new Manager("zhang", 100);
+        Manager manager1 = new Manager("Li", 500);
         //Test 1
         Pair<Manager> managerPair = new Pair<>(manager,manager1);
         printBuddies(managerPair);
         //Test 2
         Pair<? extends Employee> wildCardBuddies = managerPair;
         Pair<? extends Employee> lowEmployee = new Pair<>();
-//        wildCardBuddies.setFirst(lowEmployee); //compile error
+//        wildCardBuddies.setName(lowEmployee); //compile error
 
     }
 
