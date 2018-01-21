@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class FileInputStreamTest {
     public static void main(String[] args) throws FileNotFoundException {
-//        FileInputStream in = new FileInputStream("test.txt");
+//        FileInputStream in = new FileInputStream("test.log");
 //        try {
 //            //1
 ////        code that might throw exception
@@ -29,7 +29,7 @@ public class FileInputStreamTest {
 //        //6
 
 
-        FileInputStream in = new FileInputStream("test.txt");
+        FileInputStream in = new FileInputStream("test.log");
         try {
             try {
 //        code that might throw exception
