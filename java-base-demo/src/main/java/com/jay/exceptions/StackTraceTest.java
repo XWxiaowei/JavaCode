@@ -1,5 +1,7 @@
 package com.jay.exceptions;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Scanner;
 
 /**
@@ -14,6 +16,9 @@ public class StackTraceTest {
         System.out.println("Enter=" + scanner);
         int n = scanner.nextInt();
         factorial(n);
+
+
+
     }
 
     public static int factorial(int n) {
@@ -33,5 +38,6 @@ public class StackTraceTest {
         System.out.println("result=" + result);
         return result;
     }
+
 
 }
