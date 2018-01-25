@@ -67,4 +67,53 @@ lambda表达式中。之所以希望以后执行代码，这有很多原因，�
     }
 
 ```
- 
+### 再谈Comparator
+Comparator 接口包含很多方便的静态方法来创建比较器。这些方法可以用于lambda表达式或者方法引用
+
+静态comparing 方法取一个"键提取器"函数，它将类型T映射为一个课比较的类型（如String）。对要比较的对象
+
+应用这个函数，然后对返回的键完成比较。例如，假设有一个Person对象数组，可以如下按名字对这些对象排序：
+`Arrays.sort(people,Comparator.comparing(Person::getName))`
+
+我们来看一个完整的例子：
+```
+public class PersonCompartor {
+    public static void main(String[] args) {
+        People person = new People();
+        person.setId(111);
+        person.setName("zhangsan");
+        People person1 = new People();
+        person1.setId(12);
+        person1.setName("zhangsan");
+        People person2 = new People();
+        person2.setId(31);
+        person2.setName("an三");
+        People person3 = new People();
+        person3.setId(21);
+        person3.setName("an一11111111");
+
+        People[] peopleArray = new People[]{person,person1,person2,person3};
+        //1、按照人名排序
+        Arrays.sort(peopleArray, Comparator.comparing(People::getName));
+        System.out.println("第一次排序结果："+JSON.toJSONString(peopleArray));
+        //2、人名相同的情况下，按照id排序
+        Arrays.sort(peopleArray,Comparator.comparing(People::getName).thenComparing(People::getId));
+        System.out.println("第二次排序结果："+JSON.toJSONString(peopleArray));
+        //3、根据人名长度完成排序：，提取了的键指定一个比较器
+        Arrays.sort(peopleArray, Comparator.comparing(People::getName, (s, t) -> Integer.compare(s.length(), t.length())));
+        System.out.println("第三次排序结果："+JSON.toJSONString(peopleArray));
+        //4、第三种方法的变体
+        Arrays.sort(peopleArray,Comparator.comparing(p->p.getName().length()));
+        System.out.println("第四次排序结果（同第三次）："+JSON.toJSONString(peopleArray));
+    }
+}
+
+```
+运行结果是：
+```
+第一次排序结果：[{"id":21,"name":"an一11111111"},{"id":31,"name":"an三"},{"id":111,"name":"zhangsan"},{"id":12,"name":"zhangsan"}]
+第二次排序结果：[{"id":21,"name":"an一11111111"},{"id":31,"name":"an三"},{"id":12,"name":"zhangsan"},{"id":111,"name":"zhangsan"}]
+第三次排序结果：[{"id":31,"name":"an三"},{"id":12,"name":"zhangsan"},{"id":111,"name":"zhangsan"},{"id":21,"name":"an一11111111"}]
+第四次排序结果（同第三次）：[{"id":31,"name":"an三"},{"id":12,"name":"zhangsan"},{"id":111,"name":"zhangsan"},{"id":21,"name":"an一11111111"}]
+
+```
