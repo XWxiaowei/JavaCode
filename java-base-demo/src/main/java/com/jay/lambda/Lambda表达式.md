@@ -22,4 +22,49 @@
   
   对于第3种情况，第1个参数会成为方法的目标，例如：`String::compareToIgnoreCase`等同于`(x,y)->x.compareToIgnoreCase(y)`
   
-  
+### 变量作用域
+lambda 表达式有3个部分
+ 1. 一个代码块；
+ 2. 参数；
+ 3. 自由变量的值，这里指非参数而且不在代码中定义的变量。
+
+ **在lambda表达式中，只能引用值不会改变的变量。**
+ 
+ 这是因为如果在lambda表达式中改变变量，并发执行多个动作时就会不安全。对于目前为止我们看到的
+ 动作不会发生这种情况。
+ 
+### 处理lambda 表达式
+使用lambda表达式的重点是延迟执行。毕竟，如果想要立即执行代码，完全可以直接执行，而无需把它包装在一个
+lambda表达式中。之所以希望以后执行代码，这有很多原因，如：
+ - 在一个单独的线程中运行代码：
+ - 多次运行代码；
+ - 在算法的适当位置运行代码（例如：排序中的比较操作）；
+ - 发生某种情况时执行代码（如，点击了一个按钮，数据到达，等等）；
+ - 只在必要时才运行代码。
+
+例如：假设你想要执行一个动作n次，将这个动作和重复次数传递到一个 `repeat` 方法：
+`repeat(10,()->System.out.println("Hello,world"))`
+要接受这个lambda表达式，需要选择一个函数式接口。例如，我们可以使用 `Runnable` 接口：
+```
+ public static void repeat(int n,Runnable action){
+      for(int i=0;i<n;i++){
+        action.run();
+      }
+ }
+ 
+```
+如果要告诉动作出现在某次迭代中。
+``` 
+/**
+     * 在某次迭代中执行动作
+     * @param n
+     * @param action
+     */
+    public static void repeat(int n, IntConsumer action) {
+        for (int i = 0; i < n; i++) {
+            action.accept(i);
+        }
+    }
+
+```
+ 
