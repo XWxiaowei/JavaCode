@@ -3,6 +3,7 @@ package com.jay.innerClass;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -47,10 +48,18 @@ public class TlockTest {
     
         
         public void start2() {
-            int counter = 0;
+            int[] counter = new int[1];
             Date[] dates = new Date[100];
             for (int i = 0; i < dates.length; i++) {
-                
+                dates[i] = new Date(){
+                    @Override
+                    public int compareTo(Date other) {
+                        counter[0]++;  //ERROR
+                        return super.compareTo(other);
+                    }
+                };
+                Arrays.sort(dates);
+                System.out.println(counter+"comparisons");
             }
         }
     }
