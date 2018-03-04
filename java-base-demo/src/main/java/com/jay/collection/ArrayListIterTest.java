@@ -24,7 +24,7 @@ public class ArrayListIterTest {
 
     private static void testFori(List<Integer> list) {
         long startTime = System.currentTimeMillis();
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < list.size(); i++ ) {
             list.get(i);
         }
         System.out.println("RandomAccess用时  " + (System.currentTimeMillis() - startTime) + " ms");
