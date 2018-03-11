@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/thread-learn/ThreadLearn.iml" filepath="$PROJECT_DIR$/thread-learn/ThreadLearn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/auto-java-code-upgrade/auto-java-code-upgrade.iml" filepath="$PROJECT_DIR$/auto-java-code-upgrade/auto-java-code-upgrade.iml" />
+      <module fileurl="file://$PROJECT_DIR$/design-patterns/design-patterns.iml" filepath="$PROJECT_DIR$/design-patterns/design-patterns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/io-learn/io-learn.iml" filepath="$PROJECT_DIR$/io-learn/io-learn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java-base-demo/java-base-demo.iml" filepath="$PROJECT_DIR$/java-base-demo/java-base-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java-source/java-source.iml" filepath="$PROJECT_DIR$/java-source/java-source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java-thread-demo/java-thread-demo.iml" filepath="$PROJECT_DIR$/java-thread-demo/java-thread-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/md5-rsa-sign-demo/md5-rsa-sign-demo.iml" filepath="$PROJECT_DIR$/md5-rsa-sign-demo/md5-rsa-sign-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sms-ver-code/smsVerCode.iml" filepath="$PROJECT_DIR$/sms-ver-code/smsVerCode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/util-demo/util_demo.iml" filepath="$PROJECT_DIR$/util-demo/util_demo.iml" />
+    </modules>
+  </component>
+</project>
