@@ -1,7 +1,9 @@
 package com.jay.collection;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by xiang.wei on 2017/9/17
@@ -28,6 +30,8 @@ public class ArraysTest {
         for (String string : strings) {
             System.out.println(string);
         }
+
+        Map<String, String> map = new HashMap<>();
     }
 
 }
