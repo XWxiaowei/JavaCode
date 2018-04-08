@@ -1,4 +1,4 @@
-package main.java.com.factory.factoryMethod;
+package com.factory.factoryMethod;
 
 /**
  * @author xiang.wei

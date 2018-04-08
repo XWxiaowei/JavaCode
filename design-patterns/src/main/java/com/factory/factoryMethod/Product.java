@@ -1,4 +1,4 @@
-package main.java.com.factory.factoryMethod;
+package com.factory.factoryMethod;
 
 /**
  *  抽象产品
@@ -7,7 +7,7 @@ package main.java.com.factory.factoryMethod;
  */
 abstract  class Product {
     /**
-     *
+     * 商品展示
      */
     public abstract void show();
 }
