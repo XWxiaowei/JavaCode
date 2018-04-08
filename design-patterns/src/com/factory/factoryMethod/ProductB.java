@@ -8,6 +8,6 @@ public class ProductB extends Product {
 
     @Override
     public void show() {
-        System.out.println("产品B已经生产完成");
+        System.out.println("产品B被生产");
     }
 }

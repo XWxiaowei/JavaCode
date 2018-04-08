@@ -42,15 +42,10 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--生成对应表及类名-->		
-	    <!--<table tableName="shop_servicer" domainObjectName="ShopServicer" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-      <table tableName="sh_department" domainObjectName="ShDepartment"
+          <table tableName="shop_choose_subcompany" domainObjectName="ShopChooseSubcompany"
              enableInsert="true" enableDeleteByPrimaryKey="false" enableUpdateByPrimaryKey="true"
              enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
              enableSelectByExample="false" selectByExampleQueryId="false" selectByPrimaryKeyQueryId="false"></table>
-        <table tableName="sh_employee" domainObjectName="ShEmployee"
-               enableInsert="true" enableDeleteByPrimaryKey="false" enableUpdateByPrimaryKey="true"
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false" selectByPrimaryKeyQueryId="false"></table>
 
     </context>
 </generatorConfiguration>
