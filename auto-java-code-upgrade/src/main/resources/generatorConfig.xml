@@ -42,7 +42,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--生成对应表及类名-->		
-          <table tableName="shop_choose_subcompany" domainObjectName="ShopChooseSubcompany"
+              <table tableName="okwuyou_goods_images" domainObjectName="OkwuyouGoodsImages"
              enableInsert="true" enableDeleteByPrimaryKey="false" enableUpdateByPrimaryKey="true"
              enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
              enableSelectByExample="false" selectByExampleQueryId="false" selectByPrimaryKeyQueryId="false"></table>

@@ -54,7 +54,6 @@ public class MySimpleJavaClientGenerator extends SimpleJavaClientGenerator {
         this.addUpdateByPrimaryKeyMethod(interfaze);
         this.addCountListMethod(interfaze);
         this.addQueryPageListMethod(interfaze);
-        this.addUpdateByPrimaryKeyMethod(interfaze);
         List<CompilationUnit> answer = new ArrayList<CompilationUnit>();
         if (this.context.getPlugins().clientGenerated(interfaze, (TopLevelClass) null, this.introspectedTable)) {
             answer.add(interfaze);
