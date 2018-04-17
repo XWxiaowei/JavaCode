@@ -19,5 +19,5 @@ public class ConcreteCommand extends Command {
 
     public void excute() {
         super.receiver.action();
-    };
+    }
 }
