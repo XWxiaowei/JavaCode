@@ -39,12 +39,20 @@ public class FlySunDemoTest {
         }
 
     }
+    @Test
+    @PrepareForTest(ClassDependency.class)
+    public void testCallStaticMethod() {
+        PowerMockito.mockStatic(ClassDependency.class);
+        PowerMockito.when(ClassDependency.isStaticAlive()).thenReturn(true);
+        FlySunDemo flySunDemo = new FlySunDemo();
+        Assert.assertTrue(flySunDemo.callStaticMethod());
 
+    }
     @Test
     @PrepareForTest(ClassDependency.class)
     public void testCallFinalMethod() {
         ClassDependency refer = PowerMockito.mock(ClassDependency.class);
-        PowerMockito.when(refer.isAlive()).thenReturn(false);
+        PowerMockito.when(refer.isFinalAlive()).thenReturn(false);
         FlySunDemo flySunDemo = new FlySunDemo();
         Assert.assertFalse(flySunDemo.callFinalMethod(refer));
 

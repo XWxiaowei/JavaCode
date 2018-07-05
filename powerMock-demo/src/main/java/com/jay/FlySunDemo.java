@@ -27,12 +27,19 @@ public class FlySunDemo {
     }
 
     /**
+     * Mock普通对象的静态方法
+     * @return
+     */
+    public boolean callStaticMethod() {
+        return ClassDependency.isStaticAlive();
+    }
+    /**
      * Mock普通对象的final方法
      * @param refer
      * @return
      */
     public boolean callFinalMethod(ClassDependency refer) {
-        return refer.isAlive();
+        return refer.isFinalAlive();
     }
 
     /**
