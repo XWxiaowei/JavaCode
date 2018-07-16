@@ -7,6 +7,8 @@ import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.SimpleXMLMapperGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.AbstractXmlElementGenerator;
+import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.BaseColumnListElementGenerator;
+import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.UpdateByPrimaryKeyWithoutBLOBsElementGenerator;
 import org.mybatis.generator.internal.util.messages.Messages;
 
 /**
@@ -28,7 +30,7 @@ public class MySimpleXMLMapperGenerator extends SimpleXMLMapperGenerator {
         answer.addAttribute(new Attribute("namespace", namespace));
         this.context.getCommentGenerator().addRootComment(answer);
         this.addResultMapElement(answer);
-        this.addDeleteByPrimaryKeyElement(answer);
+        this.addBaseColumnListElement(answer);
         this.addInsertElement(answer);
         this.addUpdateByPrimaryKeyElement(answer);
         this.addSelectByPrimaryKeyElement(answer);
@@ -49,6 +51,13 @@ public class MySimpleXMLMapperGenerator extends SimpleXMLMapperGenerator {
         this.initializeAndExecuteGenerator(elementGenerator, parentElement);
     }
 
+    protected void addBaseColumnListElement(XmlElement parentElement) {
+//        if (this.introspectedTable.getRules().generateBaseColumnList()) {
+            AbstractXmlElementGenerator elementGenerator = new BaseColumnListElementGenerator();
+            this.initializeAndExecuteGenerator(elementGenerator, parentElement);
+//        }
+
+    }
     /**
      * 统计数量语句
      *
@@ -57,5 +66,11 @@ public class MySimpleXMLMapperGenerator extends SimpleXMLMapperGenerator {
     protected void addCountListElement(XmlElement parentElement) {
         AbstractXmlElementGenerator elementGenerator = new MySimpleCountListElementGenerator();
         this.initializeAndExecuteGenerator(elementGenerator, parentElement);
+    }
+    @Override
+    protected void addUpdateByPrimaryKeyElement(XmlElement parentElement) {
+            AbstractXmlElementGenerator elementGenerator = new UpdateByPrimaryKeyWithoutBLOBsElementGenerator(true);
+            this.initializeAndExecuteGenerator(elementGenerator, parentElement);
+
     }
 }

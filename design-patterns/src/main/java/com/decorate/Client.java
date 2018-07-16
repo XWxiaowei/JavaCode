@@ -9,9 +9,9 @@ public class Client {
         Coffee coffee1 = new Americano();
         Coffee coffee2 = new Latte();
         Flavour flavour = new Sugar(coffee1);
-        System.out.println(flavour.getCoffeeInfo());
+        System.out.println(flavour.getCoffeeInfo()+"现在的价格是:"+flavour.cost());
         Flavour flavour1 = new Milk(coffee2);
-        System.out.println(flavour1.getCoffeeInfo());
+        System.out.println(flavour1.getCoffeeInfo()+"现在的价格是:"+flavour1.cost());
 
     }
 }

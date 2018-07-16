@@ -1,7 +1,5 @@
 package com.proxy.dynamic_proxy;
 
-import com.proxy.static_proxy.ISubject;
-
 /**
  * Created by xiang.wei on 2018/5/28
  *
