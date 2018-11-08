@@ -34,7 +34,7 @@
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!--生成映射文件存放位置-->
-        <sqlMapGenerator targetPackage="${targetProject}\resources" targetProject="${targetProject}">
+        <sqlMapGenerator targetPackage="${sqlMapTargetPackage}" targetProject="${targetProject}">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--生成Dao类存放位置-->
@@ -46,7 +46,21 @@
              <!--enableInsert="true" enableDeleteByPrimaryKey="false" enableUpdateByPrimaryKey="true"-->
              <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
              <!--enableSelectByExample="false" selectByExampleQueryId="false" selectByPrimaryKeyQueryId="false"></table>-->
-        <table tableName="telefen_config" domainObjectName="TelefenConfig">
+
+        <table tableName="telefen_goods" domainObjectName="TelefenGoods">
         </table>
+        <!--<table tableName="telefen_order_card" domainObjectName="TelefenOrderCard">-->
+        <!--</table>-->
+        <!--<table tableName="telefen_order" domainObjectName="TelefenOrder">-->
+        <!--</table>-->
+        <!--<table tableName="telefen_card" domainObjectName="TelefenCard">-->
+        <!--</table>-->
+        <!--<table tableName="shop_order" domainObjectName="ShopOrder">-->
+        <!--</table>-->
+        <!--<table tableName="shop_order_detail" domainObjectName="ShopOrderDetail">-->
+        <!--</table>-->
+        <!--<table tableName="shop_order_record" domainObjectName="ShopOrderRecord">-->
+        <!--</table>-->
+
     </context>
 </generatorConfiguration>
