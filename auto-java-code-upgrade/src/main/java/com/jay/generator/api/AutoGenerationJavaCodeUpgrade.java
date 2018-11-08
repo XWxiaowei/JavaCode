@@ -60,7 +60,7 @@ public class AutoGenerationJavaCodeUpgrade {
         Map<String, Object> rootMap = new HashMap<String, Object>();
         rootMap.put("className", className);
         rootMap.put("modelPackageName", getModelPackageName());
-        rootMap.put("mapperPackageName", getDaoPackageName());
+        rootMap.put("daoTargetPackage", getDaoPackageName());
         for (int i = 0; i < fileNameArray.length; i++) {
             Template temp = cfg.getTemplate(fileNameArray[i][0]);
             String extPath = "";
