@@ -29,7 +29,7 @@ public class GeneratorStartUp {
      * @throws URISyntaxException
      *
      */
-    public static void main(String[] args) throws URISyntaxException {
+    public static void main(String[] args) throws Exception {
         try {
             AutoGenerationJavaCodeUpgrade autoGenerationJavaCodeUpgrade = new AutoGenerationJavaCodeUpgrade();
             //获取service，controller包名
@@ -70,15 +70,13 @@ public class GeneratorStartUp {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (InvalidConfigurationException e) {
-            e.printStackTrace();
         } catch (XMLParserException e) {
             e.printStackTrace();
         } catch (TemplateException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

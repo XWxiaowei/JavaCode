@@ -34,7 +34,7 @@
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!--生成映射文件存放位置-->
-        <sqlMapGenerator targetPackage="${sqlMapTargetPackage}" targetProject="${targetProject}">
+        <sqlMapGenerator targetPackage="${targetProject}\resources" targetProject="${targetProject}">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--生成Dao类存放位置-->
@@ -42,10 +42,11 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--生成对应表及类名-->		
-        <table tableName="tax_shop_order" domainObjectName="TaxShopOrder"
-             enableInsert="true" enableDeleteByPrimaryKey="false" enableUpdateByPrimaryKey="true"
-             enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-             enableSelectByExample="false" selectByExampleQueryId="false" selectByPrimaryKeyQueryId="false"></table>
-
+        <!--<table tableName="shop_order_bind_invoice" domainObjectName="ShopOrderBindInvoice"-->
+             <!--enableInsert="true" enableDeleteByPrimaryKey="false" enableUpdateByPrimaryKey="true"-->
+             <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+             <!--enableSelectByExample="false" selectByExampleQueryId="false" selectByPrimaryKeyQueryId="false"></table>-->
+        <table tableName="telefen_config" domainObjectName="TelefenConfig">
+        </table>
     </context>
 </generatorConfiguration>
