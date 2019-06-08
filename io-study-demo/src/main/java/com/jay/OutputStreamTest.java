@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 /**
+ * 基于字节的I/O写操作
  * Created by xiang.wei on 2019/6/8
  *
  * @author xiang.wei

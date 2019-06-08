@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
+ * 基于字节的I/O读操作
  * Created by xiang.wei on 2019/6/8
- *  面向字节的I/O操作
+ *
  * @author xiang.wei
  */
 public class InputStreamTest {
