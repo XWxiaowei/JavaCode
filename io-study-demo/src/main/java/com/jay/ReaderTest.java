@@ -19,6 +19,7 @@ public class ReaderTest {
     }
 
     /**
+     *
      * @param fileName
      * @throws IOException
      */
@@ -42,6 +43,12 @@ public class ReaderTest {
         }
     }
 
+    /**
+     * InputStreamReader+BufferedReader读取字符串 ，
+     * InputStreamReader类是从字节流到字符流的桥梁，按行读对于要处理的格式化数据是一种读取的好方式
+     * @param fileName
+     * @throws IOException
+     */
     public static void readFileToString2(String fileName) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
         try {

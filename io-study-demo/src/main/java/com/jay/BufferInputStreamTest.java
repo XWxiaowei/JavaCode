@@ -2,7 +2,6 @@ package com.jay;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * Created by xiang.wei on 2019/6/8
@@ -11,12 +10,12 @@ import java.io.InputStream;
  */
 public class BufferInputStreamTest {
     public static void main(String[] args) throws IOException {
-        InputStream inputStream =  new BufferedInputStream(InputStreamTest.class.getResourceAsStream("/inputTest.txt"));
+        BufferedInputStream inputStream =  new BufferedInputStream(InputStreamTest.class.getResourceAsStream("/inputTest.txt"));
         try {
-            int data;
-            while ((data=inputStream.read()) != -1) {
-                System.out.println(data);
-            }
+            // size  为字串的长度 ，这里一次性读完
+            byte[] bytes = new byte[inputStream.available()];
+            inputStream.read(bytes);
+            System.out.println("读取到的结果是："+new String(bytes,"UTF-8"));
         } finally {
             if (inputStream != null) {
                 inputStream.close();

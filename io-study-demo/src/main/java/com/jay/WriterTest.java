@@ -26,6 +26,11 @@ public class WriterTest {
 
     }
 
+    /**
+     * 使用BufferedWriter写入
+     * @param file
+     * @throws IOException
+     */
     public static void writeStringToFile1(FileWriter file) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(file);
         bufferedWriter.append("bufferedWriter");
@@ -33,6 +38,11 @@ public class WriterTest {
         bufferedWriter.close();
     }
 
+    /**
+     * 使用PrintWriter写入
+     * @param fileWriter
+     * @throws IOException
+     */
     public static void writeStringToFile2(FileWriter fileWriter) throws IOException {
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.append("printWriter");
