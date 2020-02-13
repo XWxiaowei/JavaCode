@@ -11,6 +11,9 @@ package com.Interpreter;
 //
 
 public class NonterminalExpression extends AbstractExpression {
+    /**
+     * @param context
+     */
     public void interpret(Context context) {
         System.out.println("非终端解释器");
     }

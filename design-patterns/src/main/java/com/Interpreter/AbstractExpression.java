@@ -11,5 +11,8 @@ package com.Interpreter;
 //
 
 public abstract class AbstractExpression {
+    /**
+     * @param context
+     */
     public abstract void interpret(Context context);
 }

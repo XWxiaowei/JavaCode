@@ -11,6 +11,9 @@ package com.Interpreter;
 //
 
 public class TerminalExpression extends AbstractExpression {
+    /**
+     * @param context
+     */
     public void interpret(Context context) {
         System.out.println("终端解释器");
     }
