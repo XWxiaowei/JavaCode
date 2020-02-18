@@ -22,6 +22,10 @@ public class CompareTest {
 
 
         words.sort(Comparator.comparingInt(String::length));
+        System.out.println("********利用Lambda表达式");
+        words.forEach(n-> System.out.println(n));
+        System.out.println("*******利用方法引用");
+        words.forEach(System.out::println);
     }
 
     public static void compareLength(String n1, String n2, Comparator comparator) {
