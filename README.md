@@ -14,3 +14,8 @@ https://blog.csdn.net/u014534808/article/details/79848049
 ## 2018/4/10
 添加适配器模式
 https://blog.csdn.net/u014534808/article/details/79848066
+
+### java-base-demo模块lambda
+[Java基础之方法引用](https://blog.csdn.net/u014534808/article/details/104366583)
+
+[Java基础之lambda表达式](https://blog.csdn.net/u014534808/article/details/79191514)
