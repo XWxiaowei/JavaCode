@@ -28,16 +28,16 @@ public class OptionalTest2 {
 
         //orElseThrow(): 值不存在则抛出异常，存在则什么都不做，有点类似Guava的Precoditions
 
-        optional1.orElseThrow(() -> {
-            throw new IllegalStateException();
-        });
-        try {
-            optional2.orElseThrow(() -> {
-                throw new IllegalStateException();
-            });
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        }
+//        optional1.orElseThrow(() -> {
+//            throw new IllegalStateException();
+//        });
+//        try {
+//            optional2.orElseThrow(() -> {
+//                throw new IllegalStateException();
+//            });
+//        } catch (IllegalStateException e) {
+//            e.printStackTrace();
+//        }
 
          //filter(Predicate) :判断Optional对象中保存的值是否满足Predicate,并返回新的Optional
         Optional<Integer> filter1 = optional1.filter(a -> a == null);
