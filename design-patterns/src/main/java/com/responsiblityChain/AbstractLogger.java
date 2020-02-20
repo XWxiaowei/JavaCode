@@ -2,7 +2,7 @@ package com.responsiblityChain;
 
 /**P
  * @author xiang.wei
- * @date 2020/2/13 6:47 PM∏
+ * @date 2020/2/13 6:47 PM
  */
 public abstract class AbstractLogger {
     protected static int DEBUG = 1;
