@@ -9,7 +9,7 @@ public class ChainPatternDemo {
         AbstractLogger consoleLogger = new ConsoleLogger();
         consoleLogger.logMessage(3, "错误信息");
         System.out.println();
-        consoleLogger.logMessage(2, "测试信息");
+        consoleLogger.logMessage(2, "文件信息");
         System.out.println();
 
         consoleLogger.logMessage(1, "控制台信息");
