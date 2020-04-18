@@ -20,11 +20,9 @@ import java.util.stream.Collectors;
 public class StudentExcelImportWrapper {
 
 
-    private static final ForkJoinPool forkJoinPool = new ForkJoinPool(4);
-
 
     public List<Student> importExcel(Workbook workbook) {
-        ForkJoinPool forkJoinPool = StudentExcelImportWrapper.forkJoinPool;
+        ForkJoinPool forkJoinPool = new ForkJoinPool(4);;
         Sheet sheet = workbook.getSheetAt(0);
         JoinTask joinTask = new JoinTask(1, sheet.getLastRowNum(), sheet);
         List<Student> importVOList = forkJoinPool.invoke(joinTask);
@@ -84,23 +82,22 @@ public class StudentExcelImportWrapper {
     private List<Student> getData(Sheet sheet, int start, int end) {
         List<Student> mapList = new ArrayList<>();
         for (int i = start; i <= end; i++) {
-            Student Student = null;
+            Student student = null;
             try {
                 Row row = sheet.getRow(i);
-                Student = new Student();
-                Student.setClassName(ExcelUtil.getKeyValue(row.getCell(0)));
-                Student.setStudentName(ExcelUtil.getKeyValue(row.getCell(1)));
-                Student.setStudentMobile(ExcelUtil.getKeyValue(row.getCell(2)));
-                Student.setIdCard(ExcelUtil.getKeyValue(row.getCell(3)));
-                Student.setStudentNo(ExcelUtil.getKeyValue(row.getCell(4)));
-                Student.setIdCard(ExcelUtil.getKeyValue(row.getCell(5)));
+                student = new Student();
+                student.setClassName(ExcelUtil.getKeyValue(row.getCell(0)));
+                student.setStudentName(ExcelUtil.getKeyValue(row.getCell(1)));
+                student.setStudentMobile(ExcelUtil.getKeyValue(row.getCell(2)));
+                student.setIdCard(ExcelUtil.getKeyValue(row.getCell(3)));
+                student.setStudentNo(ExcelUtil.getKeyValue(row.getCell(4)));
+                student.setIdCard(ExcelUtil.getKeyValue(row.getCell(5)));
             } catch (Exception e) {
                 log.info("***************税号={},文件名={},数据解析出现异常={}", e);
                 continue;
             }
-            mapList.add(Student);
+            mapList.add(student);
         }
         return mapList;
     }
-
 }

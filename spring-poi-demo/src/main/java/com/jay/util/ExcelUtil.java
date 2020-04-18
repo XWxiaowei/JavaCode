@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.formula.functions.T;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -129,7 +130,7 @@ public class ExcelUtil {
     public static String getKeyValue(Cell cell) {
         try {
             String value = PoiCellUtil.getCellValue(cell);
-            if (cell != null && cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
+            if (cell != null && cell.getCellType() == CellType.NUMERIC) {
                 return ExcelUtil.getDecimalFormat().format(cell.getNumericCellValue());
             }
             return StringUtils.isBlank(value) ? null : value.trim();
@@ -146,7 +147,7 @@ public class ExcelUtil {
      */
     public static String getMoney(Cell cell) {
         String value = PoiCellUtil.getCellValue(cell);
-        if (cell != null && cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
+        if (cell != null && cell.getCellType() == CellType.NUMERIC) {
             return String.valueOf(cell.getNumericCellValue());
         }
         return StringUtils.isBlank(value) ? null : value.trim();

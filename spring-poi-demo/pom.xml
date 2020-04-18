@@ -52,7 +52,9 @@
 		<dependency>
 			<groupId>cn.afterturn</groupId>
 			<artifactId>easypoi-spring-boot-starter</artifactId>
-			<version>3.3.0</version>
+			<!--<version>3.3.0</version>-->
+			<version>4.0.0</version>
+			<!--<version>4.1.0</version>-->
 		</dependency>
 		<!--easypoi-->
 		<!--参数校验类-->
