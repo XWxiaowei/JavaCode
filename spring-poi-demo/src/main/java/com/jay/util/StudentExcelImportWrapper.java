@@ -55,14 +55,15 @@ public class StudentExcelImportWrapper {
                 int mid = (start + end) / 2;
                 JoinTask rightTask = new JoinTask(start, mid, sheet);
                 JoinTask leftTask = new JoinTask(mid + 1, end, sheet);
+
                 //写法一
-                /*rightTask.fork();
-                List<ExcelBo> leftList =  leftTask.compute();
-                List<ExcelBo> rightList = rightTask.join();*/
-                //写法二
-                invokeAll(rightTask, leftTask);
-                List<Student> leftList = leftTask.join();
+                rightTask.fork();
+                List<Student> leftList =  leftTask.compute();
                 List<Student> rightList = rightTask.join();
+                //写法二
+                //invokeAll(rightTask, leftTask);
+                //List<Student> leftList = leftTask.join();
+                //List<Student> rightList = rightTask.join();
                 leftList.addAll(rightList);
                 return leftList;
             }
