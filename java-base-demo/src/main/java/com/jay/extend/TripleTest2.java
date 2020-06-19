@@ -5,18 +5,18 @@ package com.jay.extend;
  *
  * @author xiang.wei
  */
-public class TripleTest2 {
-    public static void main(String[] args) {
-        Employee outEmployee = new Employee();
-        outEmployee.setName("测试");
-        call(outEmployee);
-        System.out.println("employee:"+outEmployee.getName());
-    }
-
-    public static void call(Employee inEmployee) {
-        Employee employee = new Employee();
-        employee.setName("cba");
-        inEmployee.setName("abc");
-        inEmployee = employee;
-    }
-}
+//public class TripleTest2 {
+//    public static void main(String[] args) {
+//        MessageTest outEmployee = new MessageTest();
+//        outEmployee.setName("测试");
+//        call(outEmployee);
+//        System.out.println("employee:"+outEmployee.getName());
+//    }
+//
+//    public static void call(MessageTest inEmployee) {
+//        MessageTest employee = new MessageTest();
+//        employee.setName("cba");
+//        inEmployee.setName("abc");
+//        inEmployee = employee;
+//    }
+//}
